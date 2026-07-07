@@ -1,572 +1,750 @@
+Ορίστε ο κώδικας ενημερωμένος με τις αλλαγές που ζητήσατε.
 
+Αντικατέστησα το λογότυπο παντού με το νέο URL, αφαίρεσα την κυκλική μορφή δίνοντάς του απαλές στρογγυλεμένες γωνίες (`border-radius`), και πρόσθεσα ένα ξεκάθαρο, μεγάλο "X" (με ένα ωραίο εφέ εμφάνισης) μέσα στο μενού των κινητών για να κλείνει εύκολα.
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Va Va Voom | The Acting Studio — Rediscover the courage to play</title>
-<meta name="description" content="Va Va Voom Acting Studio in Amsterdam — beginner acting courses, improv classes and corporate team-building workshops. Rediscover the joy of play with actress & drama teacher Eugenia Panagiotides.">
+<title>Ιωάννης Καπούτσης — Εκτελωνιστικό Γραφείο</title>
+<meta name="description" content="Εκτελωνισμός οχημάτων κάθε κατηγορίας — αυτοκίνητα, μηχανές, φορτηγά, αντίκες, μηχανήματα. Καθαρό κόστος από την αρχή και ένας άνθρωπος δίπλα σας σε κάθε βήμα.">
+<link rel="icon" href="https://raw.githubusercontent.com/agelmet/KAPOUTSIS/refs/heads/main/ogoka%5B.jpg">
+<meta property="og:title" content="Ιωάννης Καπούτσης — Εκτελωνιστικό Γραφείο">
+<meta property="og:description" content="Εκτελωνισμός οχημάτων με καθαρές διαδικασίες και σωστό κόστος από την αρχή.">
+<meta property="og:image" content="https://raw.githubusercontent.com/agelmet/TAMPAKI/main/Gemini_Generated_Image_ra0y0hra0y0hra0y.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Spline+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#0c0908;
-  --black-2:#15100e;
-  --ivory:#f5eee2;
-  --ivory-dim:#cdc2b2;
-  --amber:#e8a24a;
-  --rust:#c75c2e;
-  --oxblood:#5c1a14;
-  --glow:rgba(232,162,74,.5);
-  --ease:cubic-bezier(.22,1,.36,1);
+  --ink:#161b1e;--ink-2:#1c2226;--slate:#4c565c;--slate-2:#6b757b;
+  --teal:#1c7270;--teal-br:#26938f;--teal-deep:#13524f;--teal-soft:#e3efee;
+  --paper:#f4f5f3;--paper-2:#eceeea;--line:#d8dcd6;--line-strong:#c0c5bd;--white:#fdfdfc;
+  --display:'Archivo',sans-serif;--body:'Spline Sans',sans-serif;--mono:'Spline Sans Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);--ease-io:cubic-bezier(.65,.05,.36,1);
+  --shadow-sm:0 2px 14px -6px rgba(22,27,30,.18);--shadow:0 18px 50px -22px rgba(22,27,30,.4);
+  --shadow-teal:0 18px 44px -18px rgba(28,114,112,.55);--maxw:1240px;--pad:clamp(1.25rem,5vw,4.5rem);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--black);
-  color:var(--ivory);
-  font-family:'Outfit',sans-serif;
-  overflow-x:hidden;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-img{display:block;max-width:100%}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-[hidden]{display:none!important}
-::selection{background:var(--rust);color:var(--ivory)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--teal);color:#fff}
+::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:var(--paper-2)}
+::-webkit-scrollbar-thumb{background:var(--slate);border:3px solid var(--paper-2);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--teal)}
 
-/* ---------- spotlight cursor ---------- */
-#spotlight{
-  position:fixed;inset:0;pointer-events:none;z-index:1;
-  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(232,162,74,.10),transparent 65%);
-  transition:opacity .5s;mix-blend-mode:screen;
-}
+/* Loader */
+#loader{position:fixed;inset:0;z-index:3000;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:transform .9s var(--ease)}
+body.loaded #loader{transform:translateY(-100%)}
+.loader-glow{position:absolute;width:60vw;height:60vw;max-width:680px;max-height:680px;border-radius:50%;background:radial-gradient(circle,rgba(28,114,112,.32),transparent 65%);filter:blur(20px);animation:glowPulse 3s var(--ease) infinite}
+@keyframes glowPulse{0%,100%{opacity:.5;transform:scale(.92)}50%{opacity:1;transform:scale(1.05)}}
+.load-logo{position:relative;z-index:2;width:min(65vw,380px);padding:1.4rem;background:#fff;border-radius:16px;opacity:0;transform:translateY(14px) scale(.96);animation:loadLogoIn 1s var(--ease) .1s forwards;box-shadow:0 20px 60px -18px rgba(0,0,0,.6)}
+@keyframes loadLogoIn{to{opacity:1;transform:none}}
+.load-bar{position:relative;z-index:2;margin-top:2.2rem;width:min(58vw,300px);height:2px;background:rgba(255,255,255,.13);overflow:hidden;border-radius:2px}
+.load-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--teal-br));box-shadow:0 0 16px rgba(38,147,143,.7);animation:loadFill 1.2s var(--ease-io) .2s forwards}
+.load-sub{position:relative;z-index:2;font-family:var(--mono);color:rgba(255,255,255,.42);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;margin-top:1.3rem;opacity:0;animation:loadLogoIn .7s ease .5s forwards}
+@keyframes loadFill{to{width:100%}}
 
-/* ---------- loader ---------- */
-#loader{
-  position:fixed;inset:0;z-index:9999;background:var(--black);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  transition:opacity .8s var(--ease),visibility .8s;
-}
-#loader.done{opacity:0;visibility:hidden}
-.loader-mark{
-  font-family:'Fraunces',serif;font-weight:900;font-style:italic;
-  font-size:clamp(2.5rem,9vw,6rem);letter-spacing:-.02em;color:var(--ivory);
-  position:relative;overflow:hidden;
-}
-.loader-mark span{display:inline-block;transform:translateY(110%);animation:loadUp .9s var(--ease) forwards}
-.loader-mark span:nth-child(2){animation-delay:.08s}
-.loader-mark span:nth-child(3){animation-delay:.16s}
-@keyframes loadUp{to{transform:translateY(0)}}
-.loader-bar{margin-top:1.6rem;width:min(260px,60vw);height:2px;background:rgba(245,238,226,.15);overflow:hidden;border-radius:2px}
-.loader-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rust),var(--amber));animation:loadBar 1.5s var(--ease) forwards .2s}
-@keyframes loadBar{to{width:100%}}
-.loader-sub{margin-top:1rem;font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ivory-dim);opacity:0;animation:fadeIn .6s forwards 1s}
-@keyframes fadeIn{to{opacity:1}}
+/* Nav */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;transition:background .45s var(--ease),box-shadow .45s var(--ease),border-color .45s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(244,245,243,.9);backdrop-filter:blur(16px);border-bottom-color:var(--line);box-shadow:0 4px 34px rgba(22,27,30,.07)}
+.nav{max-width:var(--maxw);margin:0 auto;padding:1rem var(--pad);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand img{height:110px;background:#fff;padding:0.6rem;border-radius:12px;transition:height .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);box-shadow:0 8px 26px -10px rgba(0,0,0,.5)}
+header.scrolled .brand img{height:80px;padding:0.5rem;box-shadow:0 4px 14px -8px rgba(22,27,30,.35)}
+.nav-links{display:flex;align-items:center;gap:2.1rem}
+.nav-links a{font-size:.86rem;font-weight:500;color:rgba(255,255,255,.82);position:relative;transition:color .25s;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+header.scrolled .nav-links a:not(.nav-cta){color:var(--slate);text-shadow:none}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--teal);transition:width .3s var(--ease)}
+.nav-links a:hover{color:#fff}
+header.scrolled .nav-links a:not(.nav-cta):hover{color:var(--ink)}
+.nav-links a:not(.nav-cta):hover::after{width:100%}
+.nav-cta{display:inline-flex;align-items:center;gap:.5em;background:var(--teal);color:#fff;padding:.72em 1.3em;border-radius:3px;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;font-weight:500;transition:background .3s,transform .3s var(--ease),box-shadow .3s;box-shadow:var(--shadow-teal)}
+.nav-cta:hover{background:var(--teal-deep);transform:translateY(-2px);box-shadow:0 22px 50px -18px rgba(28,114,112,.7)}
+.nav-cta svg{width:14px;height:14px}
+.burger{display:none;width:30px;height:22px;position:relative;z-index:1100;transition:opacity .3s}
+.burger span{position:absolute;left:0;height:2px;width:100%;background:#fff;transition:.4s var(--ease);box-shadow:0 1px 6px rgba(0,0,0,.4)}
+header.scrolled .burger span{background:var(--ink);box-shadow:none}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:10px}.burger span:nth-child(3){top:20px}
+.burger.open {opacity:0; pointer-events:none;}
 
-/* ---------- nav ---------- */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.5rem clamp(1.2rem,5vw,4rem);
-  transition:background .4s,padding .4s,backdrop-filter .4s;
-}
-header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-top:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(245,238,226,.08)}
-.brand{font-family:'Fraunces',serif;font-weight:800;font-style:italic;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;z-index:101}
-.brand b{color:var(--amber)}
-.nav-links{display:flex;gap:2.2rem;align-items:center}
-.nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;position:relative;color:var(--ivory-dim);transition:color .3s}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--amber);transition:width .3s var(--ease)}
-.nav-links a:hover{color:var(--ivory)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{padding:.6rem 1.3rem;border:1px solid var(--rust);border-radius:50px;color:var(--ivory)!important;background:transparent;transition:background .35s,color .35s,transform .35s}
-.nav-cta:hover{background:var(--rust);transform:translateY(-2px)}
-.nav-cta::after{display:none}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;z-index:101;padding:6px}
-.burger span{width:26px;height:2px;background:var(--ivory);transition:.35s var(--ease);display:block}
-
-/* mobile menu */
-.mobile-menu{
-  position:fixed;inset:0;z-index:100;background:var(--black-2);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
-  transform:translateY(-100%);transition:transform .6s var(--ease);
-}
+.mobile-menu{position:fixed;inset:0;z-index:1050;background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);transform:translateY(-100%);transition:transform .6s var(--ease)}
+.mobile-menu::before{content:"";position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(28,114,112,.28),transparent 65%);filter:blur(10px)}
 .mobile-menu.open{transform:translateY(0)}
-.mobile-menu a{font-family:'Fraunces',serif;font-size:2rem;font-style:italic;color:var(--ivory);opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
-.mobile-menu.open a{opacity:1;transform:translateY(0)}
-.mobile-menu.open a:nth-child(1){transition-delay:.15s}
-.mobile-menu.open a:nth-child(2){transition-delay:.22s}
-.mobile-menu.open a:nth-child(3){transition-delay:.29s}
-.mobile-menu.open a:nth-child(4){transition-delay:.36s}
-.mobile-menu.open a:nth-child(5){transition-delay:.43s}
-.menu-close{position:absolute;top:1.5rem;right:clamp(1.2rem,5vw,4rem);background:none;border:1px solid rgba(245,238,226,.25);width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
-.menu-close:hover{background:var(--rust);transform:rotate(90deg)}
-.menu-close::before,.menu-close::after{content:"";position:absolute;width:20px;height:2px;background:var(--ivory)}
-.menu-close::before{transform:rotate(45deg)}
-.menu-close::after{transform:rotate(-45deg)}
+.mobile-menu a{position:relative;color:#fff;font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,8vw,2.6rem);padding:.35em 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:baseline;gap:1rem}
+.mobile-menu a .mm-no{font-family:var(--mono);font-size:.8rem;color:var(--teal-br);font-weight:500}
+.mm-foot{position:relative;margin-top:2.5rem;font-family:var(--mono);color:rgba(255,255,255,.55);font-size:.82rem;letter-spacing:.1em}
 
-/* ---------- hero ---------- */
-.hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
-  padding:8rem clamp(1.2rem,5vw,4rem) 4rem;overflow:hidden;z-index:2;
+/* Mobile Menu Close Button */
+.btn-close-menu {
+  position: absolute;
+  top: 1.5rem;
+  right: var(--pad);
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.4s var(--ease);
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.8);
+  z-index: 1100;
 }
-.hero-bg{position:absolute;inset:0;z-index:-2}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(.2) contrast(1.05) brightness(.5);transform:scale(1.12);animation:kenburns 18s ease-out forwards}
-@keyframes kenburns{to{transform:scale(1)}}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(12,9,8,.92) 30%,rgba(12,9,8,.5) 65%,rgba(92,26,20,.35));}
-.hero-grain{position:absolute;inset:0;z-index:-1;opacity:.06;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.hero-inner{max-width:1100px;position:relative}
-.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:1.6rem;font-weight:600;
-  opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards .3s}
-.eyebrow .line{width:42px;height:1px;background:var(--amber)}
-.hero h1{
-  font-family:'Fraunces',serif;font-weight:300;
-  font-size:clamp(2.8rem,9vw,7.5rem);line-height:.98;letter-spacing:-.03em;margin-bottom:1.8rem;
+.mobile-menu.open .btn-close-menu {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+  transition-delay: 0.3s;
 }
-.hero h1 .l{display:block;overflow:hidden}
-.hero h1 .l span{display:inline-block;transform:translateY(110%);animation:rise 1s var(--ease) forwards}
-.hero h1 .l:nth-child(1) span{animation-delay:.45s}
-.hero h1 .l:nth-child(2) span{animation-delay:.58s}
-.hero h1 .l:nth-child(3) span{animation-delay:.71s}
-.hero h1 em{font-style:italic;font-weight:600;color:var(--amber);position:relative}
-.hero h1 b{font-weight:900;font-style:italic}
-@keyframes rise{to{transform:translateY(0);opacity:1}}
-.hero-sub{max-width:520px;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--ivory-dim);margin-bottom:2.6rem;
-  opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards .95s}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards 1.1s}
-.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.9rem;border-radius:50px;font-weight:600;font-size:.92rem;letter-spacing:.02em;transition:transform .35s var(--ease),box-shadow .35s,background .35s;cursor:pointer;border:none}
-.btn-primary{background:linear-gradient(100deg,var(--rust),var(--amber));color:var(--black);box-shadow:0 8px 30px -8px var(--glow)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px -10px var(--glow)}
-.btn-ghost{background:transparent;color:var(--ivory);border:1px solid rgba(245,238,226,.25)}
-.btn-ghost:hover{border-color:var(--amber);transform:translateY(-3px)}
-.btn .arr{transition:transform .35s}
-.btn:hover .arr{transform:translate(4px,-4px)}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory-dim);opacity:0;animation:fadeIn 1s forwards 1.6s}
-.scroll-hint .mouse{width:22px;height:36px;border:1px solid var(--ivory-dim);border-radius:14px;position:relative}
-.scroll-hint .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:6px;background:var(--amber);border-radius:2px;animation:scrolldot 1.6s infinite}
-@keyframes scrolldot{0%{opacity:0;top:7px}30%{opacity:1}60%{opacity:1;top:16px}100%{opacity:0;top:18px}}
+.btn-close-menu:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.08);
+}
+.btn-close-menu svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
 
-/* ---------- marquee ---------- */
-.marquee{border-top:1px solid rgba(245,238,226,.1);border-bottom:1px solid rgba(245,238,226,.1);padding:1.4rem 0;overflow:hidden;background:var(--black-2);position:relative;z-index:2}
-.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:scrollX 28s linear infinite;width:max-content}
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:clamp(7rem,14vh,10rem) var(--pad) clamp(2rem,5vh,3.5rem);overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transform:scale(1.12);opacity:0;transition:transform 2.4s var(--ease),opacity 1.4s ease}
+body.loaded .hero-bg img{transform:scale(1.0);opacity:1}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,22,25,.62) 0%,rgba(18,22,25,.3) 35%,rgba(18,22,25,.72) 80%,rgba(18,22,25,.94) 100%),linear-gradient(90deg,rgba(18,22,25,.7) 0%,rgba(18,22,25,.15) 55%,transparent 100%)}
+.hero-grain{position:absolute;inset:0;z-index:1;opacity:.06;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.hr{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+body.loaded .hr{opacity:1;transform:none}
+body.loaded .hr.s1{transition-delay:1.0s}
+body.loaded .hr.s2{transition-delay:1.1s}
+body.loaded .hr.s3{transition-delay:1.5s}
+body.loaded .hr.s4{transition-delay:1.6s}
+.hero-tag{display:inline-flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:clamp(.7rem,1.7vw,.82rem);letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(28,114,112,.22);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);padding:.55em 1.05em;border-radius:3px;margin-bottom:clamp(1.4rem,3vh,2rem);box-shadow:var(--shadow-sm)}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--teal-br);box-shadow:0 0 0 0 rgba(38,147,143,.6);animation:beat 2s infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 rgba(38,147,143,.6)}70%{box-shadow:0 0 0 10px rgba(38,147,143,0)}100%{box-shadow:0 0 0 0 rgba(38,147,143,0)}}
+.hero h1{font-family:var(--display);font-weight:900;line-height:1.0;letter-spacing:-.025em;font-size:clamp(2.4rem,7vw,5.8rem);color:#fff;max-width:16ch;text-shadow:0 8px 40px rgba(0,0,0,.45)}
+.hero h1 .t{color:var(--teal-br)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(108%);transition:transform 1s var(--ease)}
+body.loaded .hero h1 .ln:nth-child(1) i{transition-delay:1.2s}
+body.loaded .hero h1 .ln:nth-child(2) i{transition-delay:1.32s}
+body.loaded .hero h1 .ln:nth-child(3) i{transition-delay:1.44s}
+body.loaded .hero h1 .ln i{transform:translateY(0)}
+.hero-sub{margin-top:clamp(1.4rem,3vh,2.1rem);max-width:48ch;font-size:clamp(1rem,2.2vw,1.24rem);color:rgba(255,255,255,.86);text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.hero-actions{margin-top:clamp(1.8rem,4vh,2.6rem);display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.98em 1.7em;border-radius:3px;font-weight:600;font-size:.95rem;transition:all .35s var(--ease)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow-teal)}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-3px);box-shadow:0 26px 56px -18px rgba(28,114,112,.75)}
+.btn-primary svg{transition:transform .35s var(--ease)}
+.btn-primary:hover svg{transform:translateX(5px)}
+.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(6px)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.btn svg{width:16px;height:16px}
+.hero-stats{margin-top:clamp(2.4rem,5vh,3.4rem);display:flex;flex-wrap:wrap;gap:clamp(1.6rem,5vw,3.6rem);border-top:1px solid rgba(255,255,255,.16);padding-top:clamp(1.4rem,3vh,2rem)}
+.hstat .num{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,5vw,3rem);color:#fff;line-height:1;letter-spacing:-.02em}
+.hstat .num .u{color:var(--teal-br)}
+.hstat .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:.55rem}
+.scroll-cue{position:absolute;left:var(--pad);bottom:clamp(1.4rem,3vh,2rem);z-index:2;display:flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);opacity:0;transition:opacity .8s ease 1.9s}
+body.loaded .scroll-cue{opacity:1}
+.scroll-cue .ch{width:20px;height:32px;border:1.5px solid rgba(255,255,255,.5);border-radius:12px;position:relative}
+.scroll-cue .ch::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;background:var(--teal-br);border-radius:2px;animation:bob 1.8s var(--ease) infinite}
+@keyframes bob{0%{opacity:0;transform:translateY(-3px)}30%{opacity:1}80%{opacity:0;transform:translateY(8px)}100%{opacity:0}}
+
+/* Marquee */
+.marquee{background:var(--ink);overflow:hidden;padding:1.05rem 0;position:relative}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;width:90px;height:100%;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
+.marquee-track{display:flex;white-space:nowrap;width:max-content;animation:scrollx 34s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.4rem);color:var(--ivory-dim)}
-.marquee-track .dot{color:var(--rust);font-style:normal}
-@keyframes scrollX{to{transform:translateX(-50%)}}
+.marquee-track span{font-family:var(--display);font-weight:700;font-size:clamp(1rem,2.4vw,1.5rem);color:#fff;display:inline-flex;align-items:center;text-transform:uppercase}
+.marquee-track .sep{color:var(--teal-br);margin:0 1.3rem;font-size:1.05em}
+@keyframes scrollx{to{transform:translateX(-50%)}}
 
-/* ---------- sections ---------- */
-section{position:relative;z-index:2}
-.wrap{max-width:1200px;margin:0 auto;padding:clamp(5rem,11vw,9rem) clamp(1.2rem,5vw,4rem)}
-.sec-head{margin-bottom:3.5rem}
-.sec-eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:700;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
-.sec-eyebrow .num{font-family:'Fraunces',serif;font-style:italic;color:var(--ivory-dim)}
-.sec-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.02em;max-width:16ch}
-.sec-title em{font-style:italic;color:var(--amber)}
+/* Section frame */
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(4.5rem,10vh,8rem) var(--pad)}
+.eyebrow{display:inline-flex;align-items:center;gap:.7em;font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem}
+.eyebrow .no{color:var(--slate-2)}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--teal)}
+.sec-title{font-family:var(--display);font-weight:800;line-height:1.04;letter-spacing:-.018em;font-size:clamp(2rem,5vw,3.4rem);color:var(--ink);max-width:18ch}
+.lead{font-size:clamp(1.02rem,2vw,1.18rem);color:var(--slate);max-width:54ch}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+/* About */
+.about{background:var(--white);border-block:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:start}
+@media(min-width:920px){.about-grid{grid-template-columns:1.05fr .95fr}}
+.about-copy p{margin-top:1.15rem;color:var(--slate);font-size:clamp(1rem,1.7vw,1.08rem)}
+.about-copy p:first-of-type{margin-top:1.8rem}
+.about-copy strong{color:var(--ink);font-weight:600}
+.pullquote{margin-top:2.4rem;padding:1.7rem 0 1.7rem 1.8rem;border-left:3px solid var(--teal);font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,2.8vw,1.7rem);line-height:1.3;color:var(--ink);letter-spacing:-.01em}
+.about-card{background:var(--paper);border:1px solid var(--line);border-radius:5px;overflow:hidden;position:sticky;top:110px;box-shadow:var(--shadow);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.about-card:hover{transform:translateY(-4px);box-shadow:0 30px 70px -28px rgba(22,27,30,.5)}
+.card-head{padding:1.3rem 1.5rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:var(--paper-2)}
+.card-head .cl{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate-2)}
+.card-head .st{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.7rem;color:var(--teal-deep);font-weight:500}
+.card-head .st .dt{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:beat 2s infinite}
+.spec{display:flex;justify-content:space-between;gap:1rem;padding:1.05rem 1.5rem;border-bottom:1px solid var(--line);transition:background .3s}
+.spec:last-child{border-bottom:none}
+.spec:hover{background:var(--white)}
+.spec dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--slate-2);text-transform:uppercase;flex-shrink:0}
+.spec dd{text-align:right;font-weight:600;color:var(--ink);font-size:.95rem}
+.spec dd small{display:block;font-weight:400;color:var(--slate-2);font-family:var(--body);font-size:.82rem}
+
+/* Services */
+.services{background:var(--paper)}
+.svc-list{margin-top:clamp(2.5rem,5vh,3.8rem);border-top:1px solid var(--line-strong)}
+.svc{border-bottom:1px solid var(--line-strong);transition:padding-left .4s var(--ease)}
+.svc.open{padding-left:.6rem}
+.svc-btn{width:100%;display:flex;align-items:center;gap:clamp(1rem,3vw,2.2rem);padding:clamp(1.5rem,3vw,2.1rem) 0;text-align:left}
+.svc-no{font-family:var(--mono);font-size:.85rem;color:var(--slate-2);flex-shrink:0;width:2.4ch;transition:color .3s}
+.svc-name{font-family:var(--display);font-weight:700;font-size:clamp(1.35rem,3.8vw,2.3rem);letter-spacing:-.015em;flex:1;line-height:1.1;transition:transform .4s var(--ease),color .3s}
+.svc-ic{flex-shrink:0;width:clamp(34px,5vw,46px);height:clamp(34px,5vw,46px);border:1px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;transition:all .4s var(--ease)}
+.svc-ic svg{width:18px;height:18px;stroke:var(--slate);transition:transform .4s var(--ease),stroke .3s}
+.svc:hover .svc-no{color:var(--teal)}
+.svc:hover .svc-name{transform:translateX(10px);color:var(--teal-deep)}
+.svc:hover .svc-ic{border-color:var(--teal);background:var(--teal);box-shadow:var(--shadow-teal)}
+.svc:hover .svc-ic svg{stroke:#fff}
+.svc.open .svc-ic{background:var(--ink);border-color:var(--ink)}
+.svc.open .svc-ic svg{stroke:#fff;transform:rotate(45deg)}
+.svc-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.svc-body-in{padding:0 0 clamp(1.6rem,3vw,2.2rem) calc(2.4ch + clamp(1rem,3vw,2.2rem));max-width:62ch}
+.svc-body-in p{color:var(--slate);font-size:clamp(1rem,1.7vw,1.08rem)}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.svc-tags span{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--teal-deep);background:var(--teal-soft);border:1px solid var(--line);padding:.4em .85em;border-radius:3px}
+
+/* Process */
+.process{background:var(--ink);color:#fff;overflow:hidden}
+.process::before{content:"";position:absolute;top:-30%;left:-10%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle,rgba(28,114,112,.18),transparent 65%);filter:blur(20px)}
+.process .eyebrow{color:var(--teal-br)}.process .eyebrow::before{background:var(--teal-br)}.process .eyebrow .no{color:rgba(255,255,255,.45)}
+.process .sec-title{color:#fff}.process .lead{color:rgba(255,255,255,.62);margin-top:1.3rem}
+.rail{margin-top:clamp(3rem,6vh,4.5rem);position:relative}
+.rail::before{content:"";position:absolute;left:0;top:27px;width:100%;height:2px;background:rgba(255,255,255,.12)}
+.rail-fill{position:absolute;left:0;top:27px;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal-br));box-shadow:0 0 16px rgba(38,147,143,.6);width:0;transition:width 1.4s var(--ease-io)}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:2.4rem 1.5rem}
+@media(min-width:780px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{position:relative}
+.step-dot{width:56px;height:56px;border-radius:50%;background:var(--ink);border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;font-family:var(--mono);font-weight:600;color:rgba(255,255,255,.6);position:relative;z-index:2;transition:all .5s var(--ease)}
+.step.lit .step-dot{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 0 0 6px rgba(28,114,112,.18),var(--shadow-teal);transform:scale(1.06)}
+.step h4{font-family:var(--display);font-weight:700;font-size:1.18rem;margin-top:1.4rem;letter-spacing:-.01em}
+.step p{margin-top:.6rem;color:rgba(255,255,255,.58);font-size:.95rem;max-width:30ch}
+
+/* Values */
+.values{background:var(--white);border-block:1px solid var(--line)}
+.val-grid{margin-top:clamp(2.5rem,5vh,3.6rem);display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+@media(min-width:640px){.val-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.val-grid{grid-template-columns:repeat(4,1fr)}}
+.val{background:var(--white);padding:clamp(1.8rem,3vw,2.4rem);position:relative;transition:background .4s var(--ease),transform .4s var(--ease);overflow:hidden}
+.val::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--teal);transition:width .5s var(--ease)}
+.val:hover{background:var(--paper);transform:translateY(-3px)}
+.val:hover::after{width:100%}
+.val-ic{width:46px;height:46px;display:grid;place-items:center;color:var(--teal);margin-bottom:1.4rem;transition:transform .5s var(--ease)}
+.val:hover .val-ic{transform:translateY(-4px) scale(1.08)}
+.val-ic svg{width:30px;height:30px;stroke:var(--teal);stroke-width:1.4;fill:none}
+.val h4{font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
+.val p{margin-top:.7rem;color:var(--slate);font-size:.95rem}
+.val .vno{position:absolute;top:1.4rem;right:1.6rem;font-family:var(--mono);font-size:.72rem;color:var(--line-strong)}
+
+/* Fleet */
+.fleet{background:var(--paper)}
+.fleet-grid{margin-top:clamp(2.4rem,5vh,3.4rem);display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);border-radius:5px;overflow:hidden}
+@media(min-width:760px){.fleet-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1080px){.fleet-grid{grid-template-columns:repeat(5,1fr)}}
+.fl{background:var(--paper);padding:1.9rem 1.4rem;display:flex;flex-direction:column;gap:1.1rem;transition:background .4s,transform .4s var(--ease)}
+.fl:hover{background:var(--ink);transform:translateY(-4px);box-shadow:var(--shadow);z-index:2}
+.fl svg{width:42px;height:30px;stroke:var(--slate);stroke-width:1.5;fill:none;transition:stroke .4s,transform .4s var(--ease)}
+.fl:hover svg{stroke:var(--teal-br);transform:scale(1.08)}
+.fl b{font-family:var(--display);font-weight:600;font-size:1.02rem;color:var(--ink);transition:color .4s}
+.fl:hover b{color:#fff}
+.fl span{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--slate-2);text-transform:uppercase;transition:color .4s}
+.fl:hover span{color:var(--teal-br)}
+
+/* FAQ */
+.faq{background:var(--white);border-top:1px solid var(--line)}
+.faq-grid{display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,5vw,4rem);margin-top:1rem}
+@media(min-width:900px){.faq-grid{grid-template-columns:.85fr 1.15fr;align-items:start}}
+.faq-list{border-top:1px solid var(--line)}
+.fitem{border-bottom:1px solid var(--line)}
+.fq{width:100%;display:flex;justify-content:space-between;gap:1.5rem;align-items:center;text-align:left;padding:1.4rem 0;font-family:var(--display);font-weight:600;font-size:clamp(1.02rem,2vw,1.18rem);color:var(--ink);transition:color .3s}
+.fq:hover{color:var(--teal-deep)}
+.fq .pm{position:relative;flex-shrink:0;width:18px;height:18px}
+.fq .pm::before,.fq .pm::after{content:"";position:absolute;background:var(--teal);transition:transform .4s var(--ease)}
+.fq .pm::before{top:8px;left:0;width:100%;height:2px}
+.fq .pm::after{left:8px;top:0;height:100%;width:2px}
+.fitem.open .fq .pm::after{transform:scaleY(0)}
+.fa{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.fa p{padding-bottom:1.4rem;color:var(--slate);max-width:54ch}
+
+/* Contact */
+.contact{background:var(--ink);color:#fff;overflow:hidden}
+.contact::before{content:"";position:absolute;bottom:-30%;right:-5%;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle,rgba(28,114,112,.2),transparent 64%);filter:blur(22px)}
+.contact .eyebrow{color:var(--teal-br)}.contact .eyebrow::before{background:var(--teal-br)}.contact .eyebrow .no{color:rgba(255,255,255,.45)}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,5vw,4rem)}
+@media(min-width:920px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact h2{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,6vw,4rem);line-height:1;letter-spacing:-.02em;color:#fff}
+.contact h2 em{font-style:normal;color:var(--teal-br)}
+.contact-lead{margin-top:1.6rem;color:rgba(255,255,255,.65);max-width:42ch;font-size:clamp(1.02rem,2vw,1.15rem)}
+.cc-rows{margin-top:2.6rem;display:flex;flex-direction:column;gap:1rem}
+.cc{display:flex;align-items:center;gap:1.2rem;padding:1.4rem 1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:5px;background:rgba(255,255,255,.04);transition:border-color .35s,background .35s,transform .35s var(--ease),box-shadow .35s}
+.cc-link:hover{border-color:rgba(38,147,143,.6);background:rgba(28,114,112,.12);transform:translateY(-3px);box-shadow:var(--shadow)}
+.cc-ic{flex-shrink:0;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--teal);transition:all .35s var(--ease);box-shadow:var(--shadow-teal)}
+.cc-link:hover .cc-ic{background:var(--teal-br);transform:scale(1.06)}
+.cc-ic svg{width:21px;height:21px;stroke:#fff;stroke-width:1.7;fill:none}
+.cc-tx{min-width:0}
+.cc-tx .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.cc-tx .cnum{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.25rem,3.4vw,1.7rem);color:#fff;margin-top:.25rem;letter-spacing:.01em;line-height:1.1}
+.cc-tx .hint{display:block;font-size:.85rem;color:rgba(255,255,255,.5);margin-top:.3rem}
+.contact-side{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.cs-head{padding:1.4rem 1.6rem;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center}
+.cs-head .t{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.cs-mode{display:flex;flex-direction:column;padding:.5rem 0}
+.csm{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.6rem;transition:background .3s}
+.csm:hover{background:rgba(255,255,255,.03)}
+.csm svg{width:22px;height:22px;stroke:var(--teal-br);stroke-width:1.5;fill:none;flex-shrink:0;margin-top:2px}
+.csm b{font-family:var(--display);font-weight:600;color:#fff;font-size:1.02rem}
+.csm p{color:rgba(255,255,255,.58);font-size:.9rem;margin-top:.2rem}
+.cs-cta{margin-top:auto;padding:1.4rem 1.6rem;border-top:1px solid rgba(255,255,255,.1)}
+.cs-cta a{display:flex;align-items:center;justify-content:center;gap:.6em;background:var(--teal);color:#fff;padding:1.05em;border-radius:3px;font-weight:600;transition:background .3s,transform .3s var(--ease),box-shadow .3s;box-shadow:var(--shadow-teal)}
+.cs-cta a:hover{background:var(--teal-deep);transform:translateY(-2px);box-shadow:0 24px 50px -18px rgba(28,114,112,.7)}
+.cs-cta a svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
+
+/* Footer */
+footer{background:#11161a;color:rgba(255,255,255,.55);border-top:1px solid rgba(255,255,255,.08)}
+.foot{max-width:var(--maxw);margin:0 auto;padding:clamp(2.5rem,5vw,3.5rem) var(--pad)}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:flex-start;padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-brand img{height:60px;width:auto;background:#fff;padding:.4rem;border-radius:8px;margin-bottom:1.1rem;box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+.foot-brand p{max-width:34ch;font-size:.9rem}
+.foot-nav{display:flex;flex-wrap:wrap;gap:1.4rem}
+.foot-nav a{font-size:.88rem;transition:color .25s}
+.foot-nav a:hover{color:var(--teal-br)}
+.foot-bottom{padding-top:1.8rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center;font-size:.82rem}
+.foot-bottom .hrs{font-family:var(--mono);letter-spacing:.04em;color:rgba(255,255,255,.45)}
+.credit a{color:var(--teal-br);font-weight:500;transition:color .25s}
+.credit a:hover{color:#fff}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
 .reveal.in{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+.reveal.d1{transition-delay:.09s}.reveal.d2{transition-delay:.18s}.reveal.d3{transition-delay:.27s}.reveal.d4{transition-delay:.36s}
 
-/* ---------- about ---------- */
-.about{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:center}
-.about-img{position:relative}
-.about-img .frame{position:relative;border-radius:6px;overflow:hidden;cursor:zoom-in}
-.about-img .frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;filter:grayscale(.15) contrast(1.05);transition:transform .8s var(--ease),filter .6s}
-.about-img .frame:hover img{transform:scale(1.04);filter:grayscale(0)}
-.about-img .tag{position:absolute;bottom:-18px;left:-18px;background:var(--amber);color:var(--black);font-family:'Fraunces',serif;font-style:italic;font-weight:700;padding:.8rem 1.4rem;border-radius:4px;font-size:1.05rem;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
-.about-txt p{font-size:1.08rem;color:var(--ivory-dim);margin-bottom:1.3rem}
-.about-txt p.lead{font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,1.7rem);font-style:italic;color:var(--ivory);line-height:1.35}
-.quote{margin-top:2rem;padding-left:1.4rem;border-left:2px solid var(--rust);font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--amber)}
-
-/* ---------- philosophy strip ---------- */
-.philosophy{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07);border-bottom:1px solid rgba(245,238,226,.07)}
-.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.phil-card{padding:2rem 1.8rem;border:1px solid rgba(245,238,226,.08);border-radius:8px;background:linear-gradient(160deg,rgba(245,238,226,.02),transparent);transition:transform .5s var(--ease),border-color .5s,background .5s}
-.phil-card:hover{transform:translateY(-6px);border-color:rgba(232,162,74,.35);background:linear-gradient(160deg,rgba(232,162,74,.06),transparent)}
-.phil-card .ic{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:2.4rem;color:var(--rust);line-height:1;margin-bottom:1rem}
-.phil-card h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500;margin-bottom:.7rem}
-.phil-card p{color:var(--ivory-dim);font-size:.98rem}
-
-/* ---------- services ---------- */
-.services-list{display:flex;flex-direction:column;border-top:1px solid rgba(245,238,226,.12)}
-.svc{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1rem,4vw,3rem);align-items:center;padding:2.4rem 0;border-bottom:1px solid rgba(245,238,226,.12);cursor:default;transition:padding .5s var(--ease)}
-.svc:hover{padding-left:1.2rem;padding-right:1.2rem}
-.svc .svc-num{font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:var(--rust)}
-.svc-body h3{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.05;transition:color .4s,transform .5s var(--ease)}
-.svc:hover .svc-body h3{color:var(--amber)}
-.svc-body p{color:var(--ivory-dim);margin-top:.6rem;max-width:62ch;font-size:1rem}
-.svc-meta{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-dim);text-align:right;white-space:nowrap}
-.svc-arrow{width:52px;height:52px;border:1px solid rgba(245,238,226,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .4s,transform .4s,border-color .4s;flex-shrink:0}
-.svc:hover .svc-arrow{background:var(--rust);border-color:var(--rust);transform:rotate(45deg)}
-
-/* ---------- gallery ---------- */
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;grid-auto-rows:minmax(120px,auto)}
-.gal-item{overflow:hidden;border-radius:6px;cursor:zoom-in;position:relative}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),filter .6s;filter:grayscale(.25)}
-.gal-item:hover img{transform:scale(1.07);filter:grayscale(0)}
-.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,9,8,.4),transparent 50%);opacity:0;transition:opacity .5s}
-.gal-item:hover::after{opacity:1}
-.g1{grid-column:span 7;grid-row:span 2}
-.g2{grid-column:span 5}
-.g3{grid-column:span 5}
-.g4{grid-column:span 12;grid-row:span 1}
-
-/* ---------- reviews ---------- */
-.reviews{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07)}
-.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
-.rev-card{padding:2.2rem;border:1px solid rgba(245,238,226,.1);border-radius:10px;background:linear-gradient(160deg,rgba(245,238,226,.025),transparent);position:relative;transition:transform .5s var(--ease),border-color .5s}
-.rev-card:hover{transform:translateY(-5px);border-color:rgba(232,162,74,.3)}
-.rev-card .mark{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:3.5rem;color:var(--rust);line-height:0;position:absolute;top:2.4rem;left:1.8rem;opacity:.45}
-.rev-card p{font-size:1.02rem;color:var(--ivory);margin:1.6rem 0 1.4rem;padding-top:1rem}
-.rev-card .who{display:flex;align-items:center;gap:.8rem;font-weight:600;color:var(--amber)}
-.rev-card .who span{width:30px;height:1px;background:var(--rust)}
-.stars{color:var(--amber);letter-spacing:.2em;margin-bottom:.4rem;font-size:.85rem}
-
-/* ---------- CTA ---------- */
-.cta-sec{text-align:center;position:relative;overflow:hidden}
-.cta-sec .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(199,92,46,.25),transparent 65%);pointer-events:none;filter:blur(40px)}
-.cta-sec h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,7vw,5.5rem);line-height:1;margin-bottom:1.5rem;position:relative}
-.cta-sec h2 em{font-style:italic;color:var(--amber)}
-.cta-sec p{color:var(--ivory-dim);max-width:48ch;margin:0 auto 2.5rem;font-size:1.1rem;position:relative}
-.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
-
-/* ---------- footer ---------- */
-footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);padding:4rem clamp(1.2rem,5vw,4rem) 2rem}
-.foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
-.foot-brand{font-family:'Fraunces',serif;font-style:italic;font-weight:800;font-size:2rem;margin-bottom:.8rem}
-.foot-brand b{color:var(--amber)}
-.foot-col h4{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1.1rem;font-weight:700}
-.foot-col a,.foot-col p{display:block;color:var(--ivory-dim);margin-bottom:.6rem;font-size:.95rem;transition:color .3s}
-.foot-col a:hover{color:var(--amber)}
-.foot-bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.8rem;border-top:1px solid rgba(245,238,226,.08);font-size:.82rem;color:var(--ivory-dim)}
-.foot-bottom a{color:var(--ivory-dim);transition:color .3s}
-.foot-bottom a:hover{color:var(--amber)}
-.advon b{color:var(--ivory)}
-
-/* ---------- lightbox ---------- */
-#lightbox{position:fixed;inset:0;z-index:9000;background:rgba(8,6,5,.96);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;padding:2rem;cursor:zoom-out}
-#lightbox.open{opacity:1;visibility:visible}
-#lightbox img{max-width:92vw;max-height:90vh;border-radius:6px;transform:scale(.92);transition:transform .5s var(--ease);box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
-#lightbox.open img{transform:scale(1)}
-.lb-close{position:absolute;top:1.6rem;right:1.6rem;width:50px;height:50px;border:1px solid rgba(245,238,226,.3);border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
-.lb-close:hover{background:var(--rust);transform:rotate(90deg)}
-.lb-close::before,.lb-close::after{content:"";position:absolute;width:20px;height:2px;background:var(--ivory)}
-.lb-close::before{transform:rotate(45deg)}.lb-close::after{transform:rotate(-45deg)}
-
-/* ---------- responsive ---------- */
-@media(max-width:900px){
-  .nav-links{display:none}
-  .burger{display:flex}
-  .about{grid-template-columns:1fr;gap:3rem}
-  .about-img{max-width:440px;margin:0 auto}
-  .phil-grid{grid-template-columns:1fr}
-  .rev-grid{grid-template-columns:1fr}
-  .gallery{grid-template-columns:repeat(2,1fr)}
-  .g1,.g2,.g3,.g4{grid-column:span 2;grid-row:span 1}
-  .g1 img,.g2 img,.g3 img,.g4 img{aspect-ratio:4/3}
-  .svc{grid-template-columns:auto 1fr;gap:1rem}
-  .svc-meta{display:none}
-  .svc-arrow{display:none}
-}
-@media(max-width:540px){
-  .gallery{grid-template-columns:1fr}
-  .g1,.g2,.g3,.g4{grid-column:span 1}
-  .hero-actions{width:100%}
-  .hero-actions .btn{flex:1;justify-content:center}
+@media(max-width:860px){
+  .nav-links,.nav>.nav-cta{display:none}
+  .burger{display:block}
+  .about-card{position:static}
+  .brand img{height:75px}
+  header.scrolled .brand img{height:60px}
 }
 @media(prefers-reduced-motion:reduce){
-  *{animation-duration:.001s!important;transition-duration:.1s!important}
-  .hero-bg img{animation:none;transform:scale(1)}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  #loader{display:none}
+  .hero-bg img,.hr,.hero h1 .ln i,.scroll-cue{opacity:1!important;transform:none!important}
+  .marquee-track{animation:none}
 }
 </style>
 </head>
 <body>
 
-<!-- spotlight -->
-<div id="spotlight"></div>
-
-<!-- loader -->
+<!-- LOADER -->
 <div id="loader">
-  <div class="loader-mark"><span>Va</span><span>Va</span><span>Voom</span></div>
-  <div class="loader-bar"><i></i></div>
-  <div class="loader-sub">The Acting Studio</div>
+  <div class="loader-glow"></div>
+  <img class="load-logo" src="https://raw.githubusercontent.com/agelmet/KAPOUTSIS/refs/heads/main/ogoka%5B.jpg" alt="Ιωάννης Καπούτσης">
+  <div class="load-bar"><span></span></div>
+  <div class="load-sub">Εκτελωνιστικό Γραφείο</div>
 </div>
 
-<!-- header -->
-<header id="header">
-  <a href="#top" class="brand">Va<b>Va</b>Voom</a>
-  <nav class="nav-links">
-    <a href="#about">About</a>
-    <a href="#approach">Approach</a>
-    <a href="#services">Classes</a>
-    <a href="#reviews">Voices</a>
-    <a href="#contact" class="nav-cta">Book a class</a>
+<!-- NAV -->
+<header id="hdr">
+  <nav class="nav">
+    <a href="#top" class="brand" aria-label="Ιωάννης Καπούτσης — Αρχική">
+      <img src="https://raw.githubusercontent.com/agelmet/KAPOUTSIS/refs/heads/main/ogoka%5B.jpg" alt="Λογότυπο Ιωάννης Καπούτσης Εκτελωνιστικό Γραφείο" loading="eager">
+    </a>
+    <div class="nav-links">
+      <a href="#about">Το γραφείο</a>
+      <a href="#services">Υπηρεσίες</a>
+      <a href="#process">Διαδικασία</a>
+      <a href="#faq">Ερωτήσεις</a>
+      <a href="#contact" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.74a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.34-1.27a2 2 0 0 1 2.11-.45c.88.34 1.8.57 2.74.7A2 2 0 0 1 22 16.92z"/></svg>
+        Επικοινωνία
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Μενού" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
-  <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </header>
 
-<!-- mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="menu-close" id="menuClose" aria-label="Close menu"></button>
-  <a href="#about">About</a>
-  <a href="#approach">Approach</a>
-  <a href="#services">Classes</a>
-  <a href="#reviews">Voices</a>
-  <a href="#contact">Book a class</a>
+  <button class="btn-close-menu" id="closeMenu" aria-label="Κλείσιμο μενού">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#about"><span class="mm-no">01</span> Το γραφείο</a>
+  <a href="#services"><span class="mm-no">02</span> Υπηρεσίες</a>
+  <a href="#process"><span class="mm-no">03</span> Διαδικασία</a>
+  <a href="#faq"><span class="mm-no">04</span> Ερωτήσεις</a>
+  <a href="#contact"><span class="mm-no">05</span> Επικοινωνία</a>
+  <div class="mm-foot">+30 694 285 5741 · Δευτέρα–Παρασκευή 09:00–18:00</div>
 </div>
 
-<!-- hero -->
-<section class="hero" id="top">
+<!-- HERO -->
+<main id="top">
+<section class="hero">
   <div class="hero-bg">
-    <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/60cdd9792fccebde94bb9d5afb0e9843d36e8a81/herooodsw.jpg" alt="Eugenia leading an acting class">
+    <img src="https://raw.githubusercontent.com/agelmet/KAPOUTSIS/refs/heads/main/heore.jpg" alt="Λιμάνι με εισαγόμενα οχήματα σε χώρο εκτελωνισμού" loading="eager">
   </div>
   <div class="hero-grain"></div>
+
   <div class="hero-inner">
-    <span class="eyebrow"><span class="line"></span>Amsterdam · Acting & Improvisation</span>
+    <span class="hero-tag hr s1"><span class="dot"></span>Εκτελωνισμός οχημάτων · Σε όλη την Ελλάδα</span>
     <h1>
-      <span class="l"><span>Rediscover the</span></span>
-      <span class="l"><span>courage to <em>play.</em></span></span>
+      <span class="ln"><i>Βρήκατε το όχημα.</i></span>
+      <span class="ln"><i>Το <span class="t">τελωνείο</span></i></span>
+      <span class="ln"><i>είναι δική μας δουλειά.</i></span>
     </h1>
-    <p class="hero-sub">A studio where adults learn to say <b style="color:var(--ivory)">yes</b> again — through acting, improv and the freedom to explore. No perfection. No judgement. Just the joy of being fully present.</p>
-    <div class="hero-actions">
-      <a href="#services" class="btn btn-primary">Find your class <span class="arr">↗</span></a>
-      <a href="#about" class="btn btn-ghost">Meet Eugenia</a>
+    <p class="hero-sub hr s2">Εκτελωνίζουμε αυτοκίνητα, μηχανές, φορτηγά και μηχανήματα από κάθε προορισμό. Καθαρό κόστος από την πρώτη στιγμή και κάποιος που σας ενημερώνει σε κάθε βήμα — όχι αόριστες υποσχέσεις.</p>
+    <div class="hero-actions hr s3">
+      <a href="#contact" class="btn btn-primary">
+        Μάθετε το κόστος
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#services" class="btn btn-ghost">Τι αναλαμβάνουμε</a>
+    </div>
+
+    <div class="hero-stats hr s4">
+      <div class="hstat"><div class="num" data-count="15" data-suffix="+"></div><div class="lab">Χρόνια εμπειρίας</div></div>
+      <div class="hstat"><div class="num" data-count="5"></div><div class="lab">Κατηγορίες οχημάτων</div></div>
+      <div class="hstat"><div class="num" data-count="100" data-suffix="%"></div><div class="lab">Νόμιμα &amp; σωστά</div></div>
     </div>
   </div>
-  <div class="scroll-hint"><div class="mouse"></div>Scroll</div>
+
+  <div class="scroll-cue"><span class="ch"></span>Κυλήστε</div>
 </section>
 
-<!-- marquee -->
-<div class="marquee">
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Play</span><span class="dot">✦</span><span>Improvise</span><span class="dot">✦</span><span>Connect</span><span class="dot">✦</span><span>Express</span><span class="dot">✦</span><span>Be present</span><span class="dot">✦</span>
-    <span>Play</span><span class="dot">✦</span><span>Improvise</span><span class="dot">✦</span><span>Connect</span><span class="dot">✦</span><span>Express</span><span class="dot">✦</span><span>Be present</span><span class="dot">✦</span>
+    <span>Αυτοκίνητα<span class="sep">&#10022;</span>Μηχανές<span class="sep">&#10022;</span>Φορτηγά<span class="sep">&#10022;</span>Αντίκες<span class="sep">&#10022;</span>Μηχανήματα ειδικών χρήσεων<span class="sep">&#10022;</span>Εκτίμηση κόστους<span class="sep">&#10022;</span></span>
+    <span>Αυτοκίνητα<span class="sep">&#10022;</span>Μηχανές<span class="sep">&#10022;</span>Φορτηγά<span class="sep">&#10022;</span>Αντίκες<span class="sep">&#10022;</span>Μηχανήματα ειδικών χρήσεων<span class="sep">&#10022;</span>Εκτίμηση κόστους<span class="sep">&#10022;</span></span>
   </div>
 </div>
 
-<!-- about -->
-<section id="about"><div class="wrap about">
-  <div class="about-img reveal">
-    <div class="frame" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%203.jpg">
-      <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%203.jpg" alt="Eugenia Panagiotides, actress and drama teacher">
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="eyebrow reveal"><span class="no">01</span> Το γραφείο</span>
+      <h2 class="sec-title reveal">Ένα γραφείο που ασχολείται μόνο με οχήματα</h2>
+      <p class="reveal d1">Δεν κάνουμε λίγο απ' όλα. Ο εκτελωνισμός οχημάτων είναι το αντικείμενό μας και μόνο αυτό — και η διαφορά φαίνεται στην κάθε υπόθεση. Αναλαμβάνουμε αυτοκίνητα, μηχανές, φορτηγά, αντίκες και μηχανήματα ειδικών χρήσεων.</p>
+      <p class="reveal d1">Κάθε περίπτωση έχει τη δική της ιστορία. Άλλη τελειώνει γρήγορα, άλλη θέλει δουλειά και υπομονή. <strong>Σε όλες δίνουμε την ίδια προσοχή</strong>, χωρίς να σας κουράζουμε με λεπτομέρειες που δεν χρειάζεται να ξέρετε.</p>
+      <p class="reveal d2">Εμείς τρέχουμε τα χαρτιά, τις προθεσμίες και το τελωνείο. Εσείς έχετε απέναντί σας έναν άνθρωπο που σηκώνει το τηλέφωνο και σας λέει πού βρίσκεται η υπόθεσή σας, όποτε ρωτήσετε.</p>
+      <blockquote class="pullquote reveal d2">«Θα ξέρετε το τελικό κόστος προτού κάνετε το πρώτο βήμα — όχι αφού έχετε ήδη μπλέξει.»</blockquote>
     </div>
-    <div class="tag">Eugenia Panagiotides</div>
-  </div>
-  <div class="about-txt">
-    <div class="sec-eyebrow reveal"><span class="num">01</span> The teacher</div>
-    <p class="lead reveal d1">Trained at the Aristotle University School of Drama and the Stella Adler Studio in New York, Eugenia has spent a decade making rooms feel safe enough to be brave in.</p>
-    <p class="reveal d2">As children, we say yes without hesitation — we imagine, pretend and play without worrying how we look or whether we're good enough. Somewhere along the way, most of us lose that freedom. Eugenia's whole practice is about getting it back.</p>
-    <p class="reveal d3">Through acting and improvisation, she invites beginners and seasoned performers alike to take risks, make mistakes, and grow through doing rather than judging — building skill little by little through play and genuine connection.</p>
-    <div class="quote reveal d4">"We are aware of what we are doing, but we are not judging."</div>
-  </div>
-</div></section>
 
-<!-- philosophy / approach -->
-<section class="philosophy" id="approach"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="sec-eyebrow"><span class="num">02</span> The approach</div>
-    <h2 class="sec-title">Creativity flourishes when people feel <em>safe.</em></h2>
-  </div>
-  <div class="phil-grid">
-    <div class="phil-card reveal d1">
-      <div class="ic">①</div>
-      <h3>A place to explore</h3>
-      <p>This isn't about perfection. It's about exploration — a space where mistakes are celebrated as part of the process and beginners are genuinely welcome.</p>
-    </div>
-    <div class="phil-card reveal d2">
-      <div class="ic">②</div>
-      <h3>Growth through doing</h3>
-      <p>You learn acting by acting. We take risks, try new things, fail, learn, and try again — developing awareness of our choices without harsh self-criticism.</p>
-    </div>
-    <div class="phil-card reveal d3">
-      <div class="ic">③</div>
-      <h3>A supportive community</h3>
-      <p>Strangers become an ensemble. Here you'll find a group that feels like family — where play, expression and personal growth happen side by side.</p>
-    </div>
-  </div>
-</div></section>
-
-<!-- services -->
-<section id="services"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="sec-eyebrow"><span class="num">03</span> What we offer</div>
-    <h2 class="sec-title">Three ways to step <em>into the light.</em></h2>
-  </div>
-  <div class="services-list">
-    <div class="svc reveal d1">
-      <div class="svc-num">01</div>
-      <div class="svc-body">
-        <h3>Beginner Acting</h3>
-        <p>Step into an acting class for the very first time. Build confidence in front of others, find your creative voice, and discover what it feels like to be fully present — all at your own pace.</p>
+    <aside class="about-card reveal d2">
+      <div class="card-head">
+        <span class="cl">Φάκελος εκτελωνισμού</span>
+        <span class="st"><span class="dt"></span>Σε εξέλιξη</span>
       </div>
-      <div class="svc-meta">Weekly course<br>All levels</div>
-      <div class="svc-arrow">↗</div>
-    </div>
-    <div class="svc reveal d2">
-      <div class="svc-num">02</div>
-      <div class="svc-body">
-        <h3>Improvisation</h3>
-        <p>Learn to say "yes, and" — to listen, respond and create in real time. Improv sharpens spontaneity, presence and communication, and it's the most fun you'll have learning anything.</p>
+      <dl>
+        <div class="spec"><dt>Αντικείμενο</dt><dd>Εκτελωνισμός οχημάτων<small>Αποκλειστική εξειδίκευση</small></dd></div>
+        <div class="spec"><dt>Κάλυψη</dt><dd>Όλη η Ελλάδα<small>Από απόσταση ή στο γραφείο</small></dd></div>
+        <div class="spec"><dt>Κόστος</dt><dd>Γνωστό εξαρχής<small>Εκτίμηση πριν την αγορά</small></dd></div>
+        <div class="spec"><dt>Ωράριο</dt><dd>09:00–18:00<small>Δευτέρα έως Παρασκευή</small></dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="no">02</span> Υπηρεσίες</span>
+    <h2 class="sec-title reveal">Τι αναλαμβάνουμε</h2>
+    <p class="lead reveal d1" style="margin-top:1.3rem">Από την πρώτη σκέψη για αγορά μέχρι το όχημα να είναι στο όνομά σας. Πατήστε για λεπτομέρειες.</p>
+
+    <div class="svc-list reveal d1">
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false">
+          <span class="svc-no">01</span>
+          <span class="svc-name">Εκτελωνισμός κάθε τύπου οχήματος</span>
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-in">
+          <p>Αυτοκίνητα, μηχανές, φορτηγά, αντίκες, μηχανήματα ειδικών χρήσεων. Όποιο κι αν είναι το όχημα και από όπου κι αν έρχεται, το περνάμε σωστά και νόμιμα από το τελωνείο.</p>
+          <div class="svc-tags"><span>Αυτοκίνητα</span><span>Μηχανές</span><span>Φορτηγά</span><span>Αντίκες</span><span>Μηχανήματα</span></div>
+        </div></div>
       </div>
-      <div class="svc-meta">Group classes<br>No experience needed</div>
-      <div class="svc-arrow">↗</div>
-    </div>
-    <div class="svc reveal d3">
-      <div class="svc-num">03</div>
-      <div class="svc-body">
-        <h3>Corporate Workshops</h3>
-        <p>Get your team out of the office mindset and back into curiosity. Playful, energetic, purposeful sessions that strengthen how people communicate, listen, trust and collaborate — at your office, a creative space, or outdoors.</p>
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false">
+          <span class="svc-no">02</span>
+          <span class="svc-name">Κόστος γνωστό πριν αγοράσετε</span>
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-in">
+          <p>Πριν δώσετε προκαταβολή ή κλείσετε οτιδήποτε, σας λέμε πόσο θα κοστίσει το όχημα ολοκληρωμένο. Έτσι ξέρετε αν συμφέρει από την αρχή — χωρίς κρυφές χρεώσεις στην πορεία.</p>
+          <div class="svc-tags"><span>Πριν την αγορά</span><span>Ξεκάθαρο νούμερο</span><span>Καμία έκπληξη</span></div>
+        </div></div>
       </div>
-      <div class="svc-meta">Tailored<br>For teams</div>
-      <div class="svc-arrow">↗</div>
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false">
+          <span class="svc-no">03</span>
+          <span class="svc-name">Όλη η γραφειοκρατία, δική μας δουλειά</span>
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-in">
+          <p>Χαρτιά, τελωνειακές υποχρεώσεις, προθεσμίες — τα αναλαμβάνουμε όλα. Δεν χρειάζεται να τρέχετε σε υπηρεσίες ή να ψάχνετε τι λείπει. Εμείς το χειριζόμαστε και σας κρατάμε ενήμερους.</p>
+          <div class="svc-tags"><span>Πλήρης διαχείριση</span><span>Όλα τα έγγραφα</span><span>Ενημέρωση σε κάθε βήμα</span></div>
+        </div></div>
+      </div>
+      <div class="svc">
+        <button class="svc-btn" aria-expanded="false">
+          <span class="svc-no">04</span>
+          <span class="svc-name">Εξυπηρέτηση όπως σας βολεύει</span>
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="svc-body"><div class="svc-body-in">
+          <p>Είστε σε άλλη πόλη ή δεν προλαβαίνετε; Τα κανονίζουμε όλα από απόσταση. Προτιμάτε να τα πούμε από κοντά; Περάστε από το γραφείο. Όπως σας εξυπηρετεί καλύτερα.</p>
+          <div class="svc-tags"><span>Σε όλη την Ελλάδα</span><span>Από απόσταση</span><span>Στο γραφείο</span></div>
+        </div></div>
+      </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- gallery -->
-<section id="gallery"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="sec-eyebrow"><span class="num">04</span> On the floor</div>
-    <h2 class="sec-title">Where the <em>play</em> happens.</h2>
-  </div>
-  <div class="gallery">
-    <div class="gal-item g1 reveal" data-zoom="https://github.com/agelmet/PANAGIOTIDOU/blob/main/IMG_2650.jpeg?raw=true"><img src="https://github.com/agelmet/PANAGIOTIDOU/blob/main/IMG_2650.jpeg?raw=true" alt="Eugenia improvising during a class"></div>
-    <div class="gal-item g2 reveal d1" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%201.jpg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%201.jpg" alt="Portrait of Eugenia"></div>
-    <div class="gal-item g3 reveal d2" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/60cdd9792fccebde94bb9d5afb0e9843d36e8a81/herooodsw.jpg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/60cdd9792fccebde94bb9d5afb0e9843d36e8a81/herooodsw.jpg" alt="Acting class in session"></div>
-  </div>
-</div></section>
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="no">03</span> Πώς δουλεύουμε</span>
+    <h2 class="sec-title reveal">Τέσσερα βήματα, καθαρά</h2>
+    <p class="lead reveal d1">Σας λέμε πού βρίσκεται η υπόθεση σε κάθε στάδιο, ώστε να ξέρετε πάντα τι ακολουθεί.</p>
 
-<!-- reviews -->
-<section class="reviews" id="reviews"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="sec-eyebrow"><span class="num">05</span> Voices from the room</div>
-    <h2 class="sec-title">What people <em>take home.</em></h2>
-  </div>
-  <div class="rev-grid">
-    <div class="rev-card reveal d1">
-      <div class="mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p>Eugenia makes every class something to look forward to all week. She has a rare ability to make everyone feel comfortable being themselves while gently encouraging them to step outside their comfort zone at their own pace. I learned a lot, laughed a lot, and would highly recommend her to anyone curious about giving acting or improv a try.</p>
-      <div class="who"><span></span>Marton</div>
-    </div>
-    <div class="rev-card reveal d2">
-      <div class="mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p>With a steady, well-thought pace she created an environment where the seven of us felt comfortable to open up. Her authentic, humble approach made us respect her even more as we transformed, little by little, from strangers into an acting team. She builds real skill through play and connection.</p>
-      <div class="who"><span></span>Florina</div>
-    </div>
-    <div class="rev-card reveal d1">
-      <div class="mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p>An incredible atmosphere where each of us stopped being shy and opened up completely. Beyond acting, we also learned real improvisation techniques. A great professional — thank you, Eugenia ❤️</p>
-      <div class="who"><span></span>Lana</div>
-    </div>
-    <div class="rev-card reveal d2">
-      <div class="mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p>I loved the course structure — getting to know each other, understanding our strengths and weaknesses, corrected gently yet professionally with an accurate eye. She made us feel safe, playful, and generally like a family.</p>
-      <div class="who"><span></span>Jonathan</div>
+    <div class="rail reveal d1">
+      <div class="rail-fill" id="railFill"></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot">01</div><h4>Μιλάμε</h4><p>Μας λέτε τι όχημα κοιτάτε και από πού. Ακούμε την περίπτωσή σας.</p></div>
+        <div class="step"><div class="step-dot">02</div><h4>Σας λέμε το κόστος</h4><p>Παίρνετε καθαρή εικόνα του τελικού κόστους πριν αποφασίσετε οτιδήποτε.</p></div>
+        <div class="step"><div class="step-dot">03</div><h4>Αναλαμβάνουμε</h4><p>Τρέχουμε χαρτιά και τελωνείο, με ενημέρωση σε κάθε βήμα.</p></div>
+        <div class="step"><div class="step-dot">04</div><h4>Παραδίδουμε</h4><p>Το όχημα είναι έτοιμο και νόμιμο στο όνομά σας. Τελειώσαμε.</p></div>
+      </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- CTA -->
-<section class="cta-sec" id="contact"><div class="wrap">
-  <div class="glow"></div>
-  <div class="sec-eyebrow reveal" style="justify-content:center">Ready when you are</div>
-  <h2 class="reveal d1">Where adults learn<br>to <em>say yes</em> again.</h2>
-  <p class="reveal d2">Whether you're stepping onto the floor for the first time or bringing your whole team — there's a place for you here. Send a message and let's find your class.</p>
-  <div class="cta-actions reveal d3">
-    <a href="https://wa.me/31687842951" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp Eugenia <span class="arr">↗</span></a>
-    <a href="mailto:eugeniapntd@gmail.com" class="btn btn-ghost">eugeniapntd@gmail.com</a>
+<!-- FLEET -->
+<section class="fleet">
+  <div class="wrap" style="padding-top:clamp(3.5rem,7vh,5.5rem);padding-bottom:clamp(3.5rem,7vh,5.5rem)">
+    <span class="eyebrow reveal"><span class="no">04</span> Κατηγορίες</span>
+    <h2 class="sec-title reveal">Ό,τι κι αν φέρνετε</h2>
+    <div class="fleet-grid reveal d1">
+      <div class="fl"><svg viewBox="0 0 48 32"><path d="M4 22h40M8 22l3-9a4 4 0 0 1 4-3h18a4 4 0 0 1 4 3l3 9M14 22v3M34 22v3"/><circle cx="14" cy="22" r="3"/><circle cx="34" cy="22" r="3"/></svg><b>Αυτοκίνητα</b><span>Επιβατικά</span></div>
+      <div class="fl"><svg viewBox="0 0 48 32"><circle cx="11" cy="22" r="6"/><circle cx="37" cy="22" r="6"/><path d="M11 22l8-9h8l4 9M27 13l3-4h5"/></svg><b>Μηχανές</b><span>Δίκυκλα</span></div>
+      <div class="fl"><svg viewBox="0 0 48 32"><path d="M4 10h22v12H4zM26 14h10l6 5v3H26zM10 22v3M36 22v3"/><circle cx="13" cy="22" r="3"/><circle cx="36" cy="22" r="3"/></svg><b>Φορτηγά</b><span>Επαγγελματικά</span></div>
+      <div class="fl"><svg viewBox="0 0 48 32"><path d="M6 22h36M10 22l2-7h16l6 7M14 22v3M30 22v3"/><circle cx="14" cy="22" r="2.5"/><circle cx="30" cy="22" r="2.5"/><path d="M12 15V11h10v4"/></svg><b>Αντίκες</b><span>Συλλεκτικά</span></div>
+      <div class="fl"><svg viewBox="0 0 48 32"><path d="M6 22h14v-8h8l6 6h6v2M10 22v3M30 22v3"/><circle cx="10" cy="22" r="2.5"/><circle cx="30" cy="22" r="2.5"/><path d="M20 14V9h6"/></svg><b>Μηχανήματα</b><span>Ειδικών χρήσεων</span></div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<!-- footer -->
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="no">05</span> Γιατί εμάς</span>
+    <h2 class="sec-title reveal">Σχέσεις που κρατάνε</h2>
+    <div class="val-grid reveal d1">
+      <div class="val"><span class="vno">01</span><div class="val-ic"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Εμπιστοσύνη</h4><p>Οι περισσότεροι πελάτες μας έρχονται από σύσταση. Αυτό λέει πολλά.</p></div>
+      <div class="val"><span class="vno">02</span><div class="val-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h4>Υπευθυνότητα</h4><p>Παίρνουμε την υπόθεσή σας στα χέρια μας και τη φέρνουμε εις πέρας. Χωρίς μισόλογα.</p></div>
+      <div class="val"><span class="vno">03</span><div class="val-ic"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h4>Εχεμύθεια</h4><p>Ό,τι μας εμπιστεύεστε μένει μεταξύ μας. Πάντα διακριτικά.</p></div>
+      <div class="val"><span class="vno">04</span><div class="val-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h4>Συνέπεια</h4><p>Ό,τι συμφωνήσουμε, γίνεται — και στην ώρα του. Χωρίς δικαιολογίες.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow reveal"><span class="no">06</span> Ερωτήσεις</span>
+      <h2 class="sec-title reveal">Συχνές απορίες</h2>
+      <p class="lead reveal d1" style="margin-top:1.3rem">Δεν βρίσκετε αυτό που ψάχνετε; Πάρτε μας τηλέφωνο και θα τα πούμε απλά.</p>
+    </div>
+    <div class="faq-list reveal d1">
+      <div class="fitem">
+        <button class="fq" aria-expanded="false">Πότε να σας πάρω τηλέφωνο;<span class="pm"></span></button>
+        <div class="fa"><p>Όσο πιο νωρίς, τόσο καλύτερα — ιδανικά πριν αγοράσετε. Έτσι σας δίνουμε το τελικό κόστος από την αρχή και ξέρετε ακριβώς τι πληρώνετε προτού δεσμευτείτε σε οτιδήποτε.</p></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" aria-expanded="false">Τι οχήματα αναλαμβάνετε;<span class="pm"></span></button>
+        <div class="fa"><p>Όλα: αυτοκίνητα, μηχανές, φορτηγά, αντίκες και μηχανήματα ειδικών χρήσεων. Είτε η περίπτωση είναι απλή είτε σύνθετη, τη χειριζόμαστε.</p></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" aria-expanded="false">Μπορείτε να τα κανονίσετε όλα από απόσταση;<span class="pm"></span></button>
+        <div class="fa"><p>Ναι. Εξυπηρετούμε πελάτες σε όλη την Ελλάδα από απόσταση. Αν προτιμάτε να τα πούμε από κοντά, κλείνουμε ραντεβού στο γραφείο — ό,τι σας βολεύει.</p></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" aria-expanded="false">Πρέπει να ξέρω εγώ από τελωνειακά;<span class="pm"></span></button>
+        <div class="fa"><p>Καθόλου. Αυτή είναι η δουλειά μας. Εσείς μας δίνετε τα στοιχεία του οχήματος, εμείς αναλαμβάνουμε τα υπόλοιπα και σας τα εξηγούμε στα ίσια, χωρίς δυσνόητους όρους.</p></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" aria-expanded="false">Ποιες ώρες λειτουργείτε;<span class="pm"></span></button>
+        <div class="fa"><p>Δευτέρα έως Παρασκευή, 09:00 με 18:00. Πάρτε μας μέσα σε αυτό το ωράριο και θα σας εξυπηρετήσουμε αμέσως.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow reveal"><span class="no">07</span> Επικοινωνία</span>
+      <h2 class="reveal">Πάρτε μας ένα <em>τηλέφωνο</em>.</h2>
+      <p class="contact-lead reveal d1">Σκέφτεστε να φέρετε όχημα ή βρίσκεστε ήδη στη διαδικασία; Πείτε μας την περίπτωσή σας και θα σας πούμε τι ακολουθεί — απλά και ξεκάθαρα.</p>
+      <div class="cc-rows reveal d1">
+        <a class="cc cc-link" href="tel:+306942855741">
+          <span class="cc-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.74a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.34-1.27a2 2 0 0 1 2.11-.45c.88.34 1.8.57 2.74.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="cc-tx"><span class="lab">Τηλέφωνο</span><span class="cnum">+30 694 285 5741</span><span class="hint">Πατήστε για κλήση</span></span>
+        </a>
+        <div class="cc">
+          <span class="cc-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <span class="cc-tx"><span class="lab">Ωράριο</span><span class="cnum">Δευ–Παρ · 09:00–18:00</span><span class="hint">Σαββατοκύριακο κλειστά</span></span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="contact-side reveal d2">
+      <div class="cs-head"><span class="t">Πώς σας εξυπηρετούμε</span></div>
+      <div class="cs-mode">
+        <div class="csm">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg>
+          <div><b>Από απόσταση</b><p>Τα κανονίζουμε όλα online, όπου κι αν βρίσκεστε στην Ελλάδα.</p></div>
+        </div>
+        <div class="csm">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Στο γραφείο</b><p>Περάστε να τα πούμε από κοντά, με ραντεβού.</p></div>
+        </div>
+      </div>
+      <div class="cs-cta">
+        <a href="tel:+306942855741">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.74a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.34-1.27a2 2 0 0 1 2.11-.45c.88.34 1.8.57 2.74.7A2 2 0 0 1 22 16.92z"/></svg>
+          Καλέστε μας τώρα
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
 <footer>
-  <div class="foot-top">
-    <div class="foot-col">
-      <div class="foot-brand">Va<b>Va</b>Voom</div>
-      <p style="color:var(--ivory-dim);max-width:30ch">The Acting Studio. Acting, improvisation, and the freedom to explore — in Amsterdam.</p>
+  <div class="foot">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="https://raw.githubusercontent.com/agelmet/KAPOUTSIS/refs/heads/main/ogoka%5B.jpg" alt="Ιωάννης Καπούτσης Εκτελωνιστικό Γραφείο">
+        <p>Εκτελωνισμός οχημάτων κάθε κατηγορίας, με καθαρές διαδικασίες και κόστος γνωστό από την αρχή.</p>
+      </div>
+      <nav class="foot-nav">
+        <a href="#about">Το γραφείο</a>
+        <a href="#services">Υπηρεσίες</a>
+        <a href="#process">Διαδικασία</a>
+        <a href="#faq">Ερωτήσεις</a>
+        <a href="#contact">Επικοινωνία</a>
+      </nav>
     </div>
-    <div class="foot-col">
-      <h4>Explore</h4>
-      <a href="#about">About Eugenia</a>
-      <a href="#approach">Our approach</a>
-      <a href="#services">Classes & workshops</a>
-      <a href="#reviews">Voices</a>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> Ιωάννης Καπούτσης — Εκτελωνιστικό Γραφείο</span>
+      <span class="hrs">Δευ–Παρ 09:00–18:00 · +30 694 285 5741</span>
+      <span class="credit">Designed by <a href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
     </div>
-    <div class="foot-col">
-      <h4>Get in touch</h4>
-      <a href="https://wa.me/31687842951" target="_blank" rel="noopener">WhatsApp · +31 687 842 951</a>
-      <a href="mailto:eugeniapntd@gmail.com">eugeniapntd@gmail.com</a>
-      <p>Amsterdam, NL</p>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <div>© <span id="year"></span> Va Va Voom — The Acting Studio. All rights reserved.</div>
-    <div class="advon">Crafted by <a href="https://advonmedia.com" target="_blank" rel="noopener"><b>Advon Media</b></a></div>
   </div>
 </footer>
 
-<!-- lightbox -->
-<div id="lightbox"><button class="lb-close" aria-label="Close"></button><img src="" alt="Expanded view"></div>
-
 <script>
 (function(){
-  // year
-  document.getElementById('year').textContent=new Date().getFullYear();
+  "use strict";
+  const $=(s,c)=>(c||document).querySelector(s);
+  const $$=(s,c)=>Array.from((c||document).querySelectorAll(s));
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // loader
-  window.addEventListener('load',function(){
-    setTimeout(function(){document.getElementById('loader').classList.add('done')},1700);
-  });
+  function reveal(){document.body.classList.add('loaded');}
+  if(reduce){reveal();}
+  else{
+    window.addEventListener('load',()=>setTimeout(reveal,1400));
+    setTimeout(reveal,2400);
+  }
 
-  // header scroll
-  var header=document.getElementById('header');
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>40)header.classList.add('scrolled');else header.classList.remove('scrolled');
-  });
+  $('#yr').textContent=new Date().getFullYear();
 
-  // spotlight follow
-  var sl=document.getElementById('spotlight');
-  window.addEventListener('mousemove',function(e){
-    sl.style.setProperty('--mx',e.clientX+'px');
-    sl.style.setProperty('--my',e.clientY+'px');
-  });
+  const hdr=$('#hdr');
+  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>40);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-  // mobile menu
-  var burger=document.getElementById('burger'),
-      mm=document.getElementById('mobileMenu'),
-      mc=document.getElementById('menuClose');
-  function openMenu(){mm.classList.add('open');document.body.style.overflow='hidden';}
-  function closeMenu(){mm.classList.remove('open');document.body.style.overflow='';}
-  burger.addEventListener('click',openMenu);
-  mc.addEventListener('click',closeMenu);
-  mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+  const burger=$('#burger'), mm=$('#mobileMenu'), closeMenu=$('#closeMenu');
+  const toggleMenu=(force)=>{
+    const open=force!==undefined?force:!mm.classList.contains('open');
+    mm.classList.toggle('open',open);
+    burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  };
+  burger.addEventListener('click',()=>toggleMenu(true));
+  closeMenu.addEventListener('click',()=>toggleMenu(false));
+  $$('a',mm).forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
 
-  // reveal on scroll
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  function accordion(items,btnSel,bodySel,openCls){
+    items.forEach(it=>{
+      const btn=$(btnSel,it),body=$(bodySel,it);
+      btn.addEventListener('click',()=>{
+        const open=it.classList.contains(openCls);
+        items.forEach(o=>{o.classList.remove(openCls);$(bodySel,o).style.maxHeight=null;$(btnSel,o).setAttribute('aria-expanded','false');});
+        if(!open){it.classList.add(openCls);body.style.maxHeight=body.scrollHeight+'px';btn.setAttribute('aria-expanded','true');}
+      });
+    });
+  }
+  accordion($$('.svc'),'.svc-btn','.svc-body','open');
+  accordion($$('.fitem'),'.fq','.fa','open');
 
-  // lightbox
-  var lb=document.getElementById('lightbox'),
-      lbImg=lb.querySelector('img'),
-      lbClose=lb.querySelector('.lb-close');
-  function openLB(src){lbImg.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
-  function closeLB(){lb.classList.remove('open');document.body.style.overflow='';setTimeout(function(){lbImg.src='';},400);}
-  document.querySelectorAll('[data-zoom]').forEach(function(el){
-    el.addEventListener('click',function(){openLB(el.getAttribute('data-zoom'));});
-  });
-  lb.addEventListener('click',function(e){if(e.target!==lbImg)closeLB();});
-  lbClose.addEventListener('click',closeLB);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLB();closeMenu();}});
+  const ro=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  $$('.reveal').forEach(el=>ro.observe(el));
+
+  const railSec=$('#process'),railFill=$('#railFill'),steps=$$('.step');
+  const rio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){
+      railFill.style.width='100%';
+      steps.forEach((s,i)=>setTimeout(()=>s.classList.add('lit'),300+i*280));
+      rio.unobserve(e.target);
+    }});
+  },{threshold:.4});
+  if(railSec)rio.observe(railSec);
+
+  const easeOut=t=>1-Math.pow(1-t,3);
+  function runCounter(el){
+    const target=parseFloat(el.dataset.count),suffix=el.dataset.suffix||'',dur=1500;
+    if(reduce){el.innerHTML=target+(suffix?'<span class="u">'+suffix+'</span>':'');return;}
+    let start=null;
+    function tick(ts){
+      if(!start)start=ts;
+      const p=Math.min((ts-start)/dur,1),val=Math.round(easeOut(p)*target);
+      el.innerHTML=val+(suffix?'<span class="u">'+suffix+'</span>':'');
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const cio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){runCounter(e.target);cio.unobserve(e.target);}});
+  },{threshold:.6});
+  $$('.num[data-count]').forEach(el=>cio.observe(el));
 })();
 </script>
 </body>
 </html>
+
+```
