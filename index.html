@@ -102,24 +102,11 @@
         .img-hover-zoom img { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .img-hover-zoom:hover img { transform: scale(1.08); }
         
-        /* Responsive Hero Background */
-        .hero-bg {
-            /* Mobile configuration (fixes iOS fixed-background zoom bug) */
-            background-image: url('https://raw.githubusercontent.com/agelmet/AIVAZIDOU/refs/heads/main/7cadcf11-ae77-4523-8af3-1755bb214bd0.jpeg');
-            background-position: center top;
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            background-attachment: scroll; 
-        }
-
-        @media (min-width: 768px) {
-            .hero-bg {
-                /* Desktop configuration */
-                background-image: url('https://github.com/agelmet/AIVAZIDOU/blob/main/50db87d0-db6c-4801-9fb5-c3523e4c7d0d.jpg?raw=true');
-                background-attachment: fixed;
-                background-position: center;
-                background-size: cover;
-            }
         }
 
         /* Vertical Marquee Mask */
@@ -193,7 +180,7 @@
     <!-- Hero Section -->
     <section class="relative min-h-[100vh] flex items-center justify-start overflow-hidden pt-20">
         <div class="absolute inset-0 z-0">
-            <div class="w-full h-full hero-bg"></div>
+            <div class="w-full h-full parallax-bg" style="background-image: url('https://github.com/agelmet/AIVAZIDOU/blob/main/50db87d0-db6c-4801-9fb5-c3523e4c7d0d.jpg?raw=true');"></div>
             <!-- Refined overlay to ensure text readability -->
             <div class="absolute inset-0 bg-gradient-to-r from-lux-light/95 via-lux-light/70 to-transparent"></div>
         </div>
@@ -641,7 +628,7 @@
                     <h4 class="text-lux-sand text-xs tracking-widest uppercase mb-6 font-semibold">Κοινωνικα Δικτυα</h4>
                     <div class="flex flex-col gap-5">
                         <a href="https://www.instagram.com/kaivazidou_psychologist" target="_blank" class="flex items-center gap-3 hover:text-lux-sand transition-colors text-white/90 group">
-                            <img src="https://raw.githubusercontent.com/agelmet/Image-hosting-/refs/heads/main/instagram-logo-instagram-icon-transparent-free-png.png.webp" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform" alt="Instagram">
+                            <img src="https://raw.githubusercontent.com/agelmet/Image-hosting-/refs/heads/main/instagram-logo-instagram-icon-transparent-free-png.png.webp" class="w-6 h-6 object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity" alt="Instagram">
                             <span class="font-light">Instagram</span>
                         </a>
                         <a href="https://www.doctoranytime.gr/d/Psychologos/mourtziapi-spyridoula" target="_blank" class="flex items-center gap-3 hover:text-lux-sand transition-colors text-white/90 mt-2 group">
