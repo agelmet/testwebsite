@@ -1,752 +1,1293 @@
 <!DOCTYPE html>
-<html lang="el" class="scroll-smooth">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Καλλιόπη Αϊβαζίδου | Κλινική Ψυχολόγος & Ψυχοθεραπεύτρια</title>
-    <meta name="description" content="Η Καλλιόπη Αϊβαζίδου είναι αδειούχος Ψυχολόγος και Ψυχοθεραπεύτρια, με εξειδίκευση στη Συστημική Οικογενειακή Θεραπεία. Κλείστε ραντεβού.">
-    <meta name="author" content="Advon Media">
-    <meta name="robots" content="index, follow">
-
-    <!-- Fonts -->
+    <title>Χαρά Τζοάνου - Ψυχολόγος</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        lux: {
-                            light: '#fcfbf9',
-                            sand: '#d6cab4',
-                            taupe: '#5e5448',
-                            moss: '#568340',
-                            sage: '#3f6939',
-                            forest: '#12462d',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(18, 70, 45, 0.08)',
-                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
-                        'card': '0 10px 30px -10px rgba(94, 84, 72, 0.15)',
-                        'premium': '0 25px 50px -12px rgba(18, 70, 45, 0.15)',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'reveal-up': 'revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'marquee-vertical': 'marqueeVertical 30s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        },
-                        revealUp: {
-                            '0%': { opacity: '0', transform: 'translateY(40px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        marqueeVertical: {
-                            '0%': { transform: 'translateY(0)' },
-                            '100%': { transform: 'translateY(-50%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fcfbf9; }
-        ::-webkit-scrollbar-thumb { background: #d6cab4; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #5e5448; }
-
-        body { background-color: #fcfbf9; color: #5e5448; }
-
-        /* Typography */
-        .text-balance { text-wrap: balance; }
-        
-        /* Reveal Elements */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        /* Glassmorphism Components */
-        .glass-nav {
-            background: rgba(252, 251, 249, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(214, 202, 180, 0.3);
-        }
-        
-        .glass-service-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(214, 202, 180, 0.3);
+        /* CSS Variables for Exact Theme Colors */
+        :root {
+            --primary-green: #6d826d; 
+            --dark-green: #4f614f;
+            --light-green: #899c89;
+            --bg-beige: #f9f8f4; /* Main background color */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
         }
 
-        /* Image Effects */
-        .img-hover-zoom { overflow: hidden; }
-        .img-hover-zoom img { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
-        .img-hover-zoom:hover img { transform: scale(1.08); }
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-        /* Responsive Hero Background */
-        .hero-bg {
-            /* Mobile configuration (fixes iOS fixed-background zoom bug) */
-            background-image: url('https://raw.githubusercontent.com/agelmet/AIVAZIDOU/refs/heads/main/7cadcf11-ae77-4523-8af3-1755bb214bd0.jpeg');
-            background-position: center top;
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--bg-beige);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 60px; /* Space for Sticky CTA */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            color: var(--dark-green);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: var(--font-heading);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Animations */
+        @keyframes sway {
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-15px) translateX(10px); }
+        }
+        @keyframes floatReverse {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(15px) translateX(-10px); }
+        }
+
+        /* Leaf Decorative Elements (Replaced with PNG) */
+        .leaf-decor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6; /* Adjust blend */
+            width: 180px;
+            height: auto;
+        }
+        .leaf-sway {
+            animation: sway 8s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+        .leaf-float {
+            animation: float 10s ease-in-out infinite alternate;
+        }
+        .leaf-float-rev {
+            animation: floatReverse 12s ease-in-out infinite alternate;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1001;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--bg-beige);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .main-logo {
+            height: 150px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 25px;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Section Spacing & Banners */
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-beige);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+            position: relative;
+            z-index: 2;
+        }
+        .section-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .green-banner {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .green-banner h2 {
+            color: var(--white);
+            margin: 0;
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .green-banner .leaf-decor {
+            opacity: 0.3;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 60px 0 100px 0;
+        }
+        .hero-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 40px;
+        }
+        .hero-content {
+            flex: 1.2;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        .signature-img {
+            max-width: 250px;
+            height: auto;
+            display: block;
+            margin-top: 20px;
+        }
+        .hero-image {
+            flex: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+        .image-placeholder {
+            background-color: #e2e8e2;
+            border: 2px dashed var(--primary-green);
+            border-radius: 12px;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            text-align: justify;
+        }
+        .about-list {
+            list-style: none;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        .about-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .about-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png');
+            background-size: contain;
             background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: scroll; 
+            background-position: center;
         }
 
-        @media (min-width: 768px) {
-            .hero-bg {
-                /* Desktop configuration */
-                background-image: url('https://github.com/agelmet/AIVAZIDOU/blob/main/50db87d0-db6c-4801-9fb5-c3523e4c7d0d.jpg?raw=true');
-                background-attachment: fixed;
-                background-position: center;
-                background-size: cover;
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .service-card {
+            background: var(--bg-beige);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(109, 130, 109, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card h3 {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 20px 25px;
+            margin: 0;
+            font-size: 1.3rem;
+            text-align: left;
+        }
+        .service-card p {
+            padding: 25px;
+            font-size: 0.95rem;
+            color: var(--dark-green);
+            text-align: justify;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* Space Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        /* Articles Section */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .article-card {
+            background: var(--bg-beige);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(109, 130, 109, 0.2);
+        }
+        .article-img {
+            height: 200px;
+            background-color: #e2e8e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+        }
+        .article-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        .article-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 600;
+        }
+
+        /* FAQ Section Accordion */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-category {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-green);
+            padding-bottom: 10px;
+            color: var(--dark-green);
+        }
+        details {
+            background-color: var(--bg-beige);
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--primary-green);
+            overflow: hidden;
+        }
+        summary {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 20px 25px;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        details[open] summary::after {
+            content: '-';
+        }
+        details p {
+            padding: 25px;
+            color: var(--dark-green);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        .contact-info {
+            padding: 20px 0;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .info-item .icon {
+            color: var(--primary-green);
+            margin-right: 20px;
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 2px solid var(--primary-green);
+        }
+
+        /* Sticky Footer CTA */
+        .sticky-cta-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-green);
+            z-index: 9999;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .sticky-cta-btn {
+            display: block;
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            padding: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .sticky-cta-btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 60px 0 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        footer h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+        footer p, footer a {
+            color: #d1d9d1;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            nav { position: static; }
+            nav .container { justify-content: center; }
+            
+            .main-logo {
+                height: 180px; 
             }
-        }
+            .hero { padding-top: 10px; }
+            
+            .hero-container, .about-grid, .contact-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .hero-content {
+                display: contents; 
+            }
+            .hero-title { order: 1; text-align: center; }
+            .hero-image { order: 2; width: 100%; max-width: 400px; margin: 0 auto 20px auto; }
+            .hero-desc { order: 3; text-align: justify; }
+            .signature-img { order: 4; margin: 0 auto; }
+            .hero-btn { display: none; } /* Managed by sticky CTA */
 
-        /* Vertical Marquee Mask */
-        .marquee-mask {
-            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-        }
+            .about-grid { text-align: center; gap: 0;}
+            .about-text { display: contents; }
+            .about-text h2 { order: 1; margin-bottom: 20px; }
+            .about-p1 { order: 2; text-align: justify; }
+            .about-image { order: 3; margin-top: 25px; margin-bottom: 25px; width: 100%; max-width: 400px; margin-left:auto; margin-right:auto;}
+            .about-list-group { order: 4; text-align: left; margin: 0 auto; }
 
-        /* Lightbox */
-        #lightbox {
-            opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            .services-grid, .articles-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+            
+            .leaf-decor {
+                width: 80px; /* Small minimal leafs on mobile */
+            }
+            
+            .map-container { min-height: 250px; }
         }
-        #lightbox.active { opacity: 1; pointer-events: auto; }
-        #lightbox img { transform: scale(0.95); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        #lightbox.active img { transform: scale(1); }
+    
+        /* ============ CLIENT REDESIGN v2 ============ */
+        body{background-color:var(--bg-beige);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .40 0 0 0 0 .34 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+        p{line-height:1.8}
+        section{padding:110px 0}
+        .section-title{margin-bottom:26px}
+        .section-subtitle{margin-bottom:60px;line-height:1.8}
 
-        /* Fancy Bullet Points */
-        .bullet-point { position: relative; padding-left: 1.5rem; }
-        .bullet-point::before {
-            content: ''; position: absolute; left: 0; top: 0.6rem;
-            width: 6px; height: 6px; border-radius: 50%; background-color: #3f6939;
+        /* preloader */
+        #preloader{position:fixed;inset:0;z-index:5000;background:var(--bg-beige);display:flex;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease}
+        #preloader.done{opacity:0;visibility:hidden}
+        .pre-inner{text-align:center}
+        .pre-logo{height:140px;width:auto;opacity:0;transform:scale(.94);animation:preIn 1.1s ease .15s forwards}
+        .pre-line{display:block;height:1.5px;background:var(--primary-green);width:0;margin:22px auto 0;animation:preLine 1.2s ease .5s forwards}
+        @keyframes preIn{to{opacity:1;transform:scale(1)}}
+        @keyframes preLine{to{width:180px}}
+
+        /* green translucent blurred header */
+        nav{background-color:rgba(109,130,109,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 6px rgba(0,0,0,.12);padding:14px 0}
+        .logo{background:var(--white);border-radius:14px;padding:6px 14px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+        .main-logo{height:64px}
+        .nav-links a{color:var(--white);position:relative;padding-bottom:4px}
+        .nav-links a:hover{color:#f2f5f0}
+        .nav-links a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:1.5px;background:var(--white);transform:translateX(-50%);transition:width .35s ease}
+        .nav-links a:hover::after{width:100%}
+        section[id]{scroll-margin-top:100px}
+
+        /* buttons */
+        .btn-tz{display:inline-flex;align-items:center;gap:.5em;background:var(--dark-green);color:var(--white);border:1px solid var(--dark-green);border-radius:999px;padding:.85em 1.9em;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .3s ease,background .3s ease,box-shadow .3s ease}
+        .btn-tz:hover{transform:translateY(-2px);background:#455645;box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
+        .btn-tz.ghost{background:transparent;color:var(--dark-green)}
+        .btn-tz.ghost:hover{background:rgba(79,97,79,.08)}
+        .btn-tz.sm{padding:.6em 1.3em;font-size:.88rem}
+        .btn-tz.wide{width:100%;justify-content:center}
+
+        /* dividers, reveal, shadows, micro-interactions */
+        .bot-divider{display:flex;justify-content:center;color:var(--light-green);opacity:.75;margin:6px auto 10px}
+        .bot-divider svg{width:230px;height:auto}
+        .rv{opacity:0;transform:translateY(22px);transition:opacity 1.1s ease,transform 1.1s ease}
+        .rv.d1{transition-delay:.2s}.rv.d2{transition-delay:.35s}
+        .rv.in{opacity:1;transform:none}
+        img{transition:transform .5s ease}
+        .gallery-grid img:hover,.arch-frame img:hover,.article-img:hover{transform:scale(1.01)}
+        .service-card,.acard,.contact-card,.review-card,.article-card{border-radius:16px;box-shadow:0 4px 18px -12px rgba(60,70,60,.25)}
+
+        /* hero */
+        .hero-container{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2}
+        .hero-welcome{font-family:var(--font-heading);font-size:1.5rem;color:var(--dark-green);margin-bottom:18px}
+        .hero-p{color:var(--text-dark);margin-bottom:16px;font-size:.98rem}
+        .signature-img{max-width:220px;margin-top:14px}
+        .arch-frame{position:relative;border-radius:220px 220px 18px 18px;overflow:hidden;aspect-ratio:4/5;background:#e8e4d8;box-shadow:0 10px 30px -18px rgba(60,70,60,.4)}
+        .arch-frame.tall{aspect-ratio:3/4;border-radius:18px}
+        .arch-frame img{width:100%;height:100%;object-fit:cover;display:block}
+        .arch-frame .ph-label{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:var(--text-light);font-size:.9rem}
+        .arch-frame.is-empty .ph-label{display:flex}
+
+        /* about */
+        .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+        .about-p{margin-bottom:16px}
+        .about-cards{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:70px;align-items:stretch}
+        .acard{background:#fdfcf9;padding:44px 38px;position:relative;text-align:center;display:flex;flex-direction:column}
+        .acard-ic{width:58px;height:58px;border-radius:50%;background:var(--primary-green);color:#fff;display:flex;align-items:center;justify-content:center;margin:-72px auto 18px;box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
+        .acard-ic svg{width:26px;height:26px;fill:none;stroke:currentColor}
+        .acard-title{font-family:var(--font-heading);font-size:1.45rem;color:var(--dark-green);margin-bottom:20px}
+        .acard .about-p{text-align:left}
+        .studies-box{background:var(--primary-green);color:#fff;border-radius:12px;padding:26px 26px;text-align:left;flex:1}
+        .studies-box h4{font-family:var(--font-body);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:6px;margin:18px 0 12px}
+        .studies-box h4:first-child{margin-top:0}
+        .studies-box ul{list-style:disc;margin-left:18px}
+        .studies-box li{margin-bottom:9px;font-size:.92rem;line-height:1.6}
+        .studies-box i{opacity:.85}
+
+        /* services */
+        .banner-sub{max-width:640px;margin:14px auto 0;font-size:.98rem;opacity:.92;position:relative;z-index:2;line-height:1.7}
+        .services-grid{gap:34px !important}
+        .service-card{background:#fdfcf9;padding:38px 34px;transition:transform .35s ease,box-shadow .35s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px -16px rgba(60,70,60,.35)}
+        .svc-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:none;border:0;cursor:pointer;text-align:left;padding:0}
+        .svc-btn h3{background:var(--primary-green);color:#fff;border-radius:10px;padding:14px 18px;font-size:1.18rem;flex:1;font-family:var(--font-heading);font-weight:600}
+        .svc-chev{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--primary-green);color:var(--primary-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .4s ease,background .3s}
+        .svc-chev svg{width:16px;height:16px;fill:none;stroke:currentColor}
+        .service-card.open .svc-chev{transform:rotate(180deg);background:var(--primary-green);color:#fff}
+        .svc-sum{margin-top:18px;color:var(--text-light);font-size:.95rem}
+        .svc-full{max-height:0;overflow:hidden;transition:max-height .6s ease}
+        .svc-full p{margin-top:14px;font-size:.95rem}
+        .service-card.open .svc-full{max-height:900px}
+        .svc-more{display:inline-flex;align-items:center;gap:.4em;margin-top:16px;color:var(--dark-green);font-weight:600;font-size:.9rem;cursor:pointer;border-bottom:1px solid transparent;transition:border-color .3s}
+        .service-card:hover .svc-more{border-color:var(--dark-green)}
+        .service-card.open .svc-more{display:none}
+        .svc-cta{text-align:center;margin-top:60px;background:rgba(109,130,109,.1);border-radius:16px;padding:40px 24px}
+        .svc-cta p{margin-bottom:18px;color:var(--dark-green)}
+
+        /* gallery */
+        .gal-wrap{max-width:900px;margin:0 auto}
+        .gal-featured .image-placeholder{width:100%;border-radius:16px;box-shadow:0 8px 26px -16px rgba(60,70,60,.35)}
+        .gal-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+        .gal-thumb{aspect-ratio:4/3;border-radius:12px;cursor:pointer;font-size:.7rem;border:2px solid transparent;transition:border-color .3s,transform .3s}
+        .gal-thumb:hover{transform:translateY(-2px)}
+        .gal-thumb.is-active{border-color:var(--primary-green)}
+
+        /* quote */
+        .quote-section{padding:70px 20px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--bg-beige)}
+        .site-quote{font-family:var(--font-heading);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.2rem);color:var(--dark-green);max-width:760px;line-height:1.5;margin:22px 0 14px;border:0;background:none}
+        .quote-cite{font-family:var(--font-heading);font-style:italic;color:var(--text-light);margin-bottom:22px}
+
+        /* reviews */
+        .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+        .review-card{background:#fdfcf9;padding:34px 30px;text-align:center}
+        .rev-stars{color:#c9a24b;letter-spacing:3px;margin-bottom:14px}
+        .review-card p{font-style:italic;color:var(--text-dark);font-size:.95rem;margin-bottom:16px}
+        .rev-name{color:var(--dark-green);font-weight:600;font-size:.88rem}
+
+        /* faq categories */
+        .faq-cat{background:transparent;border:0;margin-bottom:26px}
+        .faq-cat-sum{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--primary-green);color:#fff;border-radius:12px;padding:18px 24px;font-family:var(--font-heading);font-size:1.3rem;font-weight:600}
+        .faq-cat-sum::-webkit-details-marker{display:none}
+        .cat-chev{font-size:1.4rem;line-height:1;transition:transform .3s}
+        .faq-cat[open] .cat-chev{transform:rotate(45deg)}
+        .faq-cat-body{padding:10px 6px 0;border-bottom:1px solid rgba(109,130,109,.25);margin-top:6px;padding-bottom:20px}
+        .faq-cat .faq-category{display:none}
+
+        /* contact cards */
+        .contact-cards{display:grid;grid-template-columns:1.05fr .95fr;gap:30px}
+        .contact-card{background:#fdfcf9;padding:36px 32px}
+        .cc-title{display:flex;align-items:center;gap:10px;font-family:var(--font-heading);color:var(--dark-green);font-size:1.3rem;margin-bottom:22px}
+        .gic{width:19px;height:19px;fill:none;stroke:var(--primary-green);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+        .gic.w{stroke:#fff}
+        .cline{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+        .cline .gic{margin-top:3px}
+        .cnote{font-size:.85em;color:var(--text-light)}
+        .cc-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+        .map-card{display:flex;flex-direction:column}
+        .map-card .map-container{flex:1;min-height:280px;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px -10px rgba(0,0,0,.3)}
+        #contactForm input,#contactForm textarea{width:100%;border:1px solid #ddd8ca;border-radius:10px;background:#fff;padding:.85em 1em;font:inherit;color:var(--text-dark);margin-bottom:12px}
+        #contactForm textarea{min-height:120px;resize:vertical}
+        #contactForm input:focus,#contactForm textarea:focus{outline:2px solid var(--primary-green);outline-offset:1px}
+        .frow2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .form-note{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.8rem;color:var(--text-light);margin-top:14px}
+
+        /* footer */
+        footer{padding-bottom:120px !important}
+        .footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+        .footer-logo{height:70px;width:auto;background:#fff;border-radius:12px;padding:6px 12px}
+        .footer-signature{height:54px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+        .footer-contact p{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+        .footer-contact .gic{stroke:#cfe0cf}
+        .footer-social{display:flex;gap:14px;align-items:center}
+        .footer-social a{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
+        .footer-social a:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+        .footer-social svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:1.6}
+        .footer-bottom{border-top:1px solid #5a6e5a;padding-top:20px;font-size:.8rem;position:relative;z-index:2}
+
+        /* booking bar */
+        .book-bar{position:fixed;left:0;right:0;bottom:0;z-index:1500;background:rgba(79,97,79,.97);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px clamp(16px,4vw,48px);box-shadow:0 -4px 18px rgba(0,0,0,.15)}
+        .bb-text{font-size:.92rem;line-height:1.5;max-width:520px}
+        .bb-actions{display:flex;gap:12px;flex-wrap:wrap}
+        .bb-btn{display:inline-flex;align-items:center;gap:.5em;border:1px solid rgba(255,255,255,.7);border-radius:10px;padding:.7em 1.2em;color:#fff;font-size:.88rem;font-weight:600;text-decoration:none;transition:background .3s,transform .3s}
+        .bb-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+        .bb-btn.solid{background:#fff;color:var(--dark-green)}
+        .bb-btn.solid .gic{stroke:var(--dark-green)}
+        .bb-btn.solid:hover{background:#f1f4ef}
+
+        @media (max-width: 900px){
+            .hero-container,.about-grid,.about-cards,.contact-cards{grid-template-columns:1fr;gap:40px}
+            .reviews-grid{grid-template-columns:1fr}
+            .gal-thumbs{grid-template-columns:repeat(2,1fr)}
+            .acard-ic{margin-top:-64px}
+            .book-bar{flex-direction:column;align-items:flex-start;gap:10px}
+            .bb-text{font-size:.85rem}
+            body{padding-bottom:0}
+            section{padding:80px 0}
         }
-    </style>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+</style>
 </head>
-<body class="antialiased selection:bg-lux-sage selection:text-white">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-500 glass-nav" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <!-- Text Logo -->
-            <a href="#" class="flex flex-col group cursor-pointer z-50">
-                <span class="text-xl md:text-2xl font-serif text-lux-forest font-bold tracking-wide transition-colors group-hover:text-lux-sage">Καλλιόπη Αϊβαζίδου</span>
-                <span class="text-[0.65rem] md:text-xs text-lux-taupe tracking-[0.15em] uppercase mt-1">Κλινικη Ψυχολογος & Ψυχοθεραπευτρια</span>
-            </a>
-            
-            <div class="hidden lg:flex items-center space-x-10">
-                <a href="#about" class="text-sm font-medium text-lux-taupe hover:text-lux-forest transition-colors tracking-wide uppercase">Βιογραφικο</a>
-                <a href="#services" class="text-sm font-medium text-lux-taupe hover:text-lux-forest transition-colors tracking-wide uppercase">Υπηρεσιες</a>
-                <a href="#philosophy" class="text-sm font-medium text-lux-taupe hover:text-lux-forest transition-colors tracking-wide uppercase">Φιλοσοφια</a>
-                <a href="#space" class="text-sm font-medium text-lux-taupe hover:text-lux-forest transition-colors tracking-wide uppercase">Χωρος</a>
-                <a href="#reviews" class="text-sm font-medium text-lux-taupe hover:text-lux-forest transition-colors tracking-wide uppercase">Αξιολογησεις</a>
-            </div>
-
-            <div class="hidden lg:block">
-                <a href="#contact" class="px-8 py-3 bg-lux-forest text-white rounded-none text-sm font-medium tracking-widest uppercase hover:bg-lux-sage hover:shadow-lg transition-all duration-300">
-                    Κλειστε Ραντεβου
-                </a>
-            </div>
-
-            <button class="lg:hidden text-lux-forest focus:outline-none z-50" id="mobile-menu-btn">
-                <i data-lucide="menu" class="w-8 h-8"></i>
-            </button>
+    <div id="preloader" aria-hidden="true">
+        <div class="pre-inner">
+            <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/tzoalogoo.png" alt="" class="pre-logo">
+            <span class="pre-line"></span>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 bg-lux-light/95 backdrop-blur-xl z-40 hidden flex-col items-center justify-center space-y-8">
-            <a href="#about" class="text-2xl font-serif text-lux-forest mobile-link">Βιογραφικό</a>
-            <a href="#services" class="text-2xl font-serif text-lux-forest mobile-link">Υπηρεσίες</a>
-            <a href="#philosophy" class="text-2xl font-serif text-lux-forest mobile-link">Φιλοσοφία</a>
-            <a href="#space" class="text-2xl font-serif text-lux-forest mobile-link">Χώρος</a>
-            <a href="#reviews" class="text-2xl font-serif text-lux-forest mobile-link">Αξιολογήσεις</a>
-            <a href="#contact" class="px-10 py-4 bg-lux-forest text-white text-lg tracking-widest uppercase mobile-link mt-8">Κλειστε Ραντεβου</a>
+    </div>
+
+
+    
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/tzoalogoo.png" alt="Ψ Χαρά Τζοάνου, Ψυχολόγος" class="main-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Αρχική</a></li>
+                <li><a href="#about">Σχετικά με εμένα</a></li>
+                <li><a href="#services">Υπηρεσίες</a></li>
+                <li><a href="#space">Ο χώρος</a></li>
+                <li><a href="#articles">Αρθρογραφία</a></li>
+                <li><a href="#reviews">Αξιολογήσεις</a></li>
+                <li><a href="#faq">Συχνές ερωτήσεις</a></li>
+                <li><a href="#contact">Επικοινωνία</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[100vh] flex items-center justify-start overflow-hidden pt-20">
-        <div class="absolute inset-0 z-0">
-            <div class="w-full h-full hero-bg"></div>
-            <!-- Refined overlay to ensure text readability -->
-            <div class="absolute inset-0 bg-gradient-to-r from-lux-light/95 via-lux-light/70 to-transparent"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div class="max-w-2xl reveal">
-                <div class="inline-block px-4 py-1 mb-6 border border-lux-moss text-lux-sage text-xs tracking-widest uppercase font-medium">
-                    Συστημικη Οικογενειακη Θεραπεια
-                </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-lux-forest leading-tight mb-8 text-balance">
-                    Με Επίκεντρο το <span class="italic text-lux-sage">Παιδί</span> και το <span class="italic text-lux-sage">Οικογενειακό Σύστημα</span>.
-                </h1>
-                <p class="text-lg md:text-xl text-lux-taupe leading-relaxed mb-10 text-balance">
-                    Η Καλλιόπη Αϊβαζίδου προσεγγίζει τον ψυχισμό με ενσυναίσθηση, συνδυάζοντας την επιστήμη της Ψυχολογίας με την επιστήμη της Αγωγής. Ένας ζεστός, συμπεριληπτικός και απόλυτα ασφαλής χώρος.
-                </p>
-                <div class="flex flex-wrap gap-6 items-center">
-                    <a href="#contact" class="px-8 py-4 bg-lux-forest text-white text-sm tracking-widest uppercase hover:bg-lux-sage transition-all duration-300 shadow-xl shadow-lux-forest/20">
-                        Επικοινωνια
-                    </a>
-                    <a href="#about" class="flex items-center gap-2 text-lux-forest font-medium hover:text-lux-sage transition-colors group">
-                        <span class="border-b border-lux-forest group-hover:border-lux-sage transition-colors pb-1">Γνωρίστε την προσέγγιση</span>
-                        <i data-lucide="arrow-down-right" class="w-5 h-5 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform"></i>
-                    </a>
+    <section id="home" class="hero">
+        <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-sway" style="top: 10px; left: -20px;" alt="">
+        <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-float-rev" style="bottom: 10px; right: -20px; transform: scaleX(-1);" alt="">
+
+        <div class="container hero-container">
+            <div class="hero-content rv">
+                <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+                <p class="hero-welcome">Καλώς ήρθατε στη σελίδα μου!</p>
+                <p class="hero-p">Ονομάζομαι Χαρά Τζοάνου και είμαι Ψυχολόγος με Αριθμό Άδειας Άσκησης Επαγγέλματος 1130029 και Τακτικό Μέλος του Συλλόγου Ελλήνων Ψυχολόγων (Α.Μ. 3656). Διατηρώ ιδιωτικό γραφείο στη Νέα Ιωνία και παρέχω υπηρεσίες ψυχοθεραπείας και ψυχολογικής υποστήριξης σε ενήλικες, ζευγάρια, εφήβους και παιδιά.</p>
+                <p class="hero-p">Η θεραπευτική μου προσέγγιση βασίζεται στον σεβασμό προς τη μοναδική ιστορία κάθε ανθρώπου. Πιστεύω ότι οι εμπειρίες, οι σχέσεις και τα βιώματα διαμορφώνουν τον τρόπο με τον οποίο αντιλαμβανόμαστε τον εαυτό μας, τους άλλους και τον κόσμο γύρω μας. Μέσα από αυτή τη ματιά, επιδιώκω να δημιουργώ έναν χώρο όπου κάθε άνθρωπος μπορεί να αισθανθεί ασφάλεια, αποδοχή και ελευθερία να εκφράσει όσα τον απασχολούν.</p>
+                <p class="hero-p">Η θεραπευτική μου πρακτική υποστηρίζεται από συνεχή κλινική εποπτεία, προσωπική θεραπεία και διαρκή επιστημονική επιμόρφωση, στοιχεία που θεωρώ αναπόσπαστα για την υπεύθυνη άσκηση του επαγγέλματος και την παροχή ποιοτικών υπηρεσιών ψυχικής υγείας.</p>
+                <p class="hero-p">Στόχος μου είναι να συνοδεύσω κάθε άνθρωπο σε μια διαδικασία αυτογνωσίας και προσωπικής ανάπτυξης, βοηθώντας τον να κατανοήσει βαθύτερα τον εαυτό του, να αναγνωρίσει τα μοτίβα που επηρεάζουν τη ζωή και τις σχέσεις του και να αναπτύξει νέους τρόπους αντιμετώπισης των δυσκολιών και των προκλήσεων που συναντά στην καθημερινότητα του.</p>
+                <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/homeaftertext.png" class="signature-img" alt="Υπογραφή">
+            </div>
+            <div class="hero-image rv d1">
+                <div class="arch-frame">
+                    <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/hero-photo.jpg" alt="Χαρά Τζοάνου" onerror="this.style.display='none';this.parentElement.classList.add('is-empty')">
+                    <span class="ph-label">[Φωτογραφία Ψυχολόγου]</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 md:py-32 bg-lux-light relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative reveal order-2 lg:order-1">
-                    <div class="aspect-[3/4] overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] shadow-2xl img-hover-zoom relative z-10">
-                        <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/cc40bf5b-65d9-4914-b269-f7af5a4c7c86.jpg?raw=true" alt="Καλλιόπη Αϊβαζίδου" class="w-full h-full object-cover">
+    <section id="about" class="about">
+        <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-sway" style="top: 40%; right: -30px; transform: scaleX(-1);" alt="">
+
+        <div class="container">
+            <h2 class="section-title rv">Σχετικά με εμένα</h2>
+            <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+            <div class="about-grid" style="margin-top:50px">
+                <div class="about-image rv">
+                    <div class="arch-frame tall">
+                        <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/about-photo.jpg" alt="Χαρά Τζοάνου" onerror="this.style.display='none';this.parentElement.classList.add('is-empty')">
+                        <span class="ph-label">[Πορτρέτο Ψυχολόγου]</span>
                     </div>
-                    <!-- Decorative Element -->
-                    <div class="absolute -top-8 -left-8 w-full h-full border border-lux-sand rounded-tl-[4rem] rounded-br-[4rem] z-0 animate-float"></div>
                 </div>
-                
-                <div class="order-1 lg:order-2 reveal delay-200">
-                    <h2 class="text-3xl md:text-4xl font-serif text-lux-forest mb-8 leading-tight">Κλινική Ψυχολογία & Παιδαγωγική</h2>
-                    
-                    <div class="space-y-6 text-lux-taupe leading-relaxed">
-                        <p>
-                            Η <strong>Καλλιόπη Αϊβαζίδου</strong> είναι αδειούχος Ψυχολόγος (Αρ. Αδείας: 264628/1509) και Ψυχοθεραπεύτρια, με βαθιά και πολυετή εξειδίκευση στη Συστημική Οικογενειακή Θεραπεία. Διαθέτει ένα εξαιρετικά πλούσιο και πολυδιάστατο ακαδημαϊκό προφίλ, το οποίο συνδυάζει την επιστήμη της Ψυχολογίας με την επιστήμη της Αγωγής.
-                        </p>
-                        <p>
-                            Ο πρώτος κύκλος των σπουδών της πραγματοποιήθηκε στο <strong>Παιδαγωγικό Τμήμα Προσχολικής Εκπαίδευσης του Πανεπιστημίου Θεσσαλίας</strong>, οδηγώντας την να εργαστεί αρχικά ως Νηπιαγωγός. Η βαθιά της επιθυμία, ωστόσο, να κατανοήσει και να υποστηρίξει τον ψυχισμό των παιδιών και των οικογενειών τους σε κλινικό επίπεδο, την οδήγησε στη Μεγάλη Βρετανία. Εκεί απέκτησε το πτυχίο της στην Ψυχολογία (BSc) από το <strong>University of East London</strong>, ακολουθούμενο από το Μεταπτυχιακό της δίπλωμα (MSc) στην <strong>Κλινική και Κοινοτική Ψυχολογία</strong> από το ίδιο πανεπιστήμιο.
-                        </p>
-                        <p>
-                            Έχοντας και τους δύο επαγγελματικούς της ορίζοντες σταθερά στραμμένους στο παιδί, και με την εμπιστοσύνη δεκάδων οικογενειών να τη συνοδεύει, παρέχει σήμερα εξειδικευμένες υπηρεσίες Συμβουλευτικής Παιδιών & Εφήβων, Συμβουλευτικής Γονέων και Οικογενειακής Ψυχοθεραπείας. Παράλληλα, υποστηρίζει ενήλικες στη διαχείριση του άγχους, του τραύματος και των εξαρτήσεων, προσφέροντας έναν ζεστό, συμπεριληπτικό και απόλυτα ασφαλή διαδικτυακό χώρο.
-                        </p>
+                <div class="about-text rv d1">
+                    <p class="about-p">Οι σπουδές μου περιλαμβάνουν προπτυχιακή και μεταπτυχιακή εκπαίδευση στην Ψυχολογία, με ιδιαίτερη εστίαση στην Αναπτυξιακή και Συμβουλευτική Ψυχολογία, καθώς και τετραετή εκπαίδευση στη Συστημική και Οικογενειακή Ψυχοθεραπεία.</p>
+                    <p class="about-p">Η εκπαίδευση μου συνεχίζεται διαρκώς μέσα από τη συμμετοχή σε επιστημονικά συνέδρια, εκπαιδευτικά προγράμματα, σεμινάρια και δράσεις επαγγελματικής επιμόρφωσης, καθώς θεωρώ ότι η γνώση αποτελεί μια ζωντανή διαδικασία που εξελίσσεται μαζί με τον επαγγελματία.</p>
+                    <p class="about-p">Η επιστημονική μου κατάρτιση συνδέεται άμεσα με τη συνεχή κλινική εποπτεία, την προσωπική θεραπευτική διεργασία και τον αναστοχασμό πάνω στην επαγγελματική πρακτική. Τα στοιχεία αυτά αποτελούν βασικούς άξονες της θεραπευτικής μου ταυτότητας και συμβάλλουν στην παροχή υπηρεσιών που χαρακτηρίζονται από υπευθυνότητα, σεβασμό και επαγγελματική δεοντολογία.</p>
+                </div>
+            </div>
+
+            <div class="about-cards">
+                <div class="acard rv">
+                    <div class="acard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l10 5-10 5L2 8l10-5z"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></svg></div>
+                    <h3 class="acard-title">Σπουδές &amp; Επαγγελματική Εκπαίδευση</h3>
+                    <div class="studies-box">
+                        <h4>Προπτυχιακές Σπουδές</h4>
+                        <ul>
+                            <li>Πτυχίο Φιλοσοφίας, Παιδαγωγικής &amp; Ψυχολογίας, κατεύθυνση Ψυχολογία — <i>Πανεπιστήμιο Ιωαννίνων</i></li>
+                            <li>Πτυχίο Ψυχολογίας — <i>Κρατικό Πανεπιστήμιο του Στρασβούργου</i></li>
+                            <li>Πτυχίο Ψυχολογίας — <i>Ευρωπαϊκό Πανεπιστήμιο Κύπρου</i></li>
+                        </ul>
+                        <h4>Μεταπτυχιακές Σπουδές</h4>
+                        <ul>
+                            <li>MSc Εφαρμοσμένη Αναπτυξιακή Ψυχολογία — <i>Ελληνικό Ανοικτό Πανεπιστήμιο</i></li>
+                            <li>MSc Συμβουλευτική Ψυχολογία — <i>Marconi University</i></li>
+                        </ul>
+                        <h4>Ψυχοθεραπευτική Εκπαίδευση</h4>
+                        <ul>
+                            <li>Τετραετής εκπαίδευση στη Συστημική Οικογενειακή Θεραπεία — <i>Κέντρο Διερεύνησης και Θεραπείας Ανθρωπίνων Συστημάτων</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acard rv d1">
+                    <div class="acard-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-3.5-8-6.6-8-10.5C4 7 6 5 8.5 5c1.6 0 3 .8 3.5 2 .5-1.2 1.9-2 3.5-2C18 5 20 7 20 10.5c0 3.9-4 7-8 10.5z"/></svg></div>
+                    <h3 class="acard-title">Η θεραπευτική μου προσέγγιση</h3>
+                    <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+                    <p class="about-p">Η θεραπευτική μου προσέγγιση βασίζεται στη συστημική οπτική, η οποία αντιλαμβάνεται τον άνθρωπο ως μέρος ενός ευρύτερου πλαισίου σχέσεων, εμπειριών και κοινωνικών συστημάτων.</p>
+                    <p class="about-p">Μέσα από αυτό το πρίσμα, η θεραπευτική διαδικασία εστιάζει στην κατανόηση των τρόπων με τους οποίους οι σημαντικές σχέσεις, οι εμπειρίες ζωής και τα επαναλαμβανόμενα μοτίβα αλληλεπίδρασης επηρεάζουν τον τρόπο που σκεφτόμαστε, αισθανόμαστε και σχετιζόμαστε με τους άλλους.</p>
+                    <p class="about-p">Μέσα από αυτή τη διερεύνηση δημιουργείται χώρος για βαθύτερη αυτογνωσία, μεγαλύτερη κατανόηση του εαυτού και την ανάπτυξη πιο ουσιαστικών και λειτουργικών τρόπων σύνδεσης με τους άλλους.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="padding-top: 0;">
+        <div class="green-banner">
+            <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-sway" style="top: 10px; left: 10%;" alt="">
+            <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-float" style="top: 10px; right: 10%; transform: scaleX(-1);" alt="">
+            <h2>Υπηρεσίες</h2>
+            <p class="banner-sub">Οι υπηρεσίες προσαρμόζονται στις ανάγκες κάθε ανθρώπου, με στόχο τη δημιουργία ενός ασφαλούς θεραπευτικού χώρου και μιας ουσιαστικής θεραπευτικής συνεργασίας.</p>
+        </div>
+
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card svc-toggle rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Ατομική ψυχοθεραπεία ενηλίκων</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Ένας ασφαλής χώρος για να εξερευνήσετε σκέψεις, συναισθήματα και εμπειρίες, να κατανοήσετε τον εαυτό σας βαθύτερα και να βελτιώσετε την ποιότητα της ζωής σας.</p>
+                    <div class="svc-full">
+                        <p>Η ατομική ψυχοθεραπεία ενηλίκων προσφέρει έναν ασφαλή και σταθερό χώρο διερεύνησης των σκέψεων, των συναισθημάτων, των σχέσεων και των εμπειριών που επηρεάζουν την καθημερινή ζωή.</p>
+                        <p>Μέσα από τη θεραπευτική διαδικασία το άτομο έχει τη δυνατότητα να κατανοήσει βαθύτερα τον εαυτό του, να αναγνωρίσει επαναλαμβανόμενα μοτίβα που δυσκολεύουν τη ζωή του και να αναπτύξει νέους τρόπους αντιμετώπισης των προκλήσεων που συναντά.</p>
+                        <p>Η ψυχοθεραπεία μπορεί να συμβάλει στη διαχείριση του άγχους και του στρες, στην ενίσχυση της αυτοεκτίμησης, στη βελτίωση των διαπροσωπικών σχέσεων, στην αντιμετώπιση συναισθηματικών δυσκολιών και στην προσαρμογή σε σημαντικές μεταβάσεις ζωής.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="service-card svc-toggle rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Ψυχοθεραπεία ζεύγους</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Βελτιώστε την επικοινωνία, κατανοήστε τη δυναμική της σχέσης σας και χτίστε μια πιο ουσιαστική και υγιή σύνδεση.</p>
+                    <div class="svc-full">
+                        <p>Η ψυχοθεραπεία ζεύγους απευθύνεται σε ζευγάρια που επιθυμούν να κατανοήσουν βαθύτερα τη σχέση τους, τον τρόπο επικοινωνίας τους και τα μοτίβα αλληλεπίδρασης που οδηγούν σε ένταση, απόσταση ή επαναλαμβανόμενες συγκρούσεις.</p>
+                        <p>Στόχος είναι να δημιουργηθεί ένας ασφαλής χώρος όπου και οι δύο σύντροφοι μπορούν να εκφράσουν τις ανάγκες, τα συναισθήματα και τις δυσκολίες τους με τρόπο που να διευκολύνει την κατανόηση και τον διάλογο.</p>
+                        <p>Η θεραπευτική διαδικασία βοηθά το ζευγάρι να αναγνωρίσει τους κύκλους επικοινωνίας που διατηρούν τις δυσκολίες, να κατανοήσει βαθύτερα τη θέση και την εμπειρία του άλλου και να αναπτύξει νέους τρόπους σύνδεσης που ενισχύουν την αμοιβαία κατανόηση, την εμπιστοσύνη και τη συναισθηματική εγγύτητα.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="service-card svc-toggle rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Συμβουλευτική γονέων</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Υποστήριξη και καθοδήγηση για γονείς, ώστε να ανταποκρίνονται με περισσότερη σιγουριά και αποτελεσματικότητα στις προκλήσεις της γονεϊκότητας.</p>
+                    <div class="svc-full">
+                        <p>Η συμβουλευτική γονέων προσφέρει υποστήριξη σε γονείς που επιθυμούν να κατανοήσουν βαθύτερα τις ανάγκες, τη συμπεριφορά και τις συναισθηματικές δυσκολίες του παιδιού τους.</p>
+                        <p>Μέσα από τις συναντήσεις διερευνώνται ζητήματα που αφορούν την επικοινωνία μέσα στην οικογένεια, τη θέσπιση ορίων, τη διαχείριση συγκρούσεων, τις σχολικές δυσκολίες, το άγχος, τις αναπτυξιακές μεταβάσεις και τις αλλαγές που επηρεάζουν τη λειτουργία του οικογενειακού συστήματος.</p>
+                        <p>Η συμβουλευτική γονέων δεν επικεντρώνεται μόνο στη διαχείριση των δυσκολιών, αλλά και στην κατανόηση των σχέσεων και των αλληλεπιδράσεων που διαμορφώνονται μέσα στην οικογένεια. Στόχος είναι η ενίσχυση του γονεϊκού ρόλου με τρόπο πιο συνειδητό, σταθερό και συναισθηματικά διαθέσιμο, ώστε να δημιουργούνται οι προϋποθέσεις για μια πιο ουσιαστική σύνδεση μεταξύ γονέων και παιδιών.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="service-card svc-toggle rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Ψυχοθεραπεία Παιδιού & Εφήβου</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Ένα ασφαλές πλαίσιο έκφρασης και επεξεργασίας συναισθημάτων που ενισχύει την αυτοεκτίμηση και τις δεξιότητες του παιδιού ή του εφήβου.</p>
+                    <div class="svc-full">
+                        <p>Η ψυχοθεραπεία παιδιού και εφήβου προσαρμόζεται στις ανάγκες, την ηλικία και τον μοναδικό τρόπο έκφρασης κάθε παιδιού και εφήβου. Στα παιδιά αξιοποιούνται δημιουργικά μέσα, όπως το παιχνίδι και η ζωγραφική, ενώ στους εφήβους δίνεται χώρος για διάλογο, επεξεργασία συναισθημάτων και ενίσχυση της προσωπικής τους φωνής.</p>
+                        <p>Η θεραπευτική διαδικασία μπορεί να συμβάλει στην αντιμετώπιση δυσκολιών που σχετίζονται με το άγχος, την αυτοεκτίμηση, τις κοινωνικές σχέσεις, τη σχολική προσαρμογή, τις οικογενειακές αλλαγές, τη συναισθηματική έκφραση και τη συμπεριφορά.</p>
+                        <p>Στόχος είναι η ενίσχυση της συναισθηματικής έκφρασης, της αυτοπεποίθησης, της ψυχικής ανθεκτικότητας και της δυνατότητας του παιδιού ή του εφήβου να διαχειρίζεται αποτελεσματικότερα τις προκλήσεις της καθημερινότητας και των σχέσεων του.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="service-card svc-toggle rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Ομαδική ψυχοθεραπεία</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Η δύναμη της ομάδας βοηθά στην κατανόηση του εαυτού, τη σύνδεση με άλλους και την προσωπική ανάπτυξη.</p>
+                    <div class="svc-full">
+                        <p>Η ομαδική ψυχοθεραπεία προσφέρει ένα θεραπευτικό πλαίσιο μέσα στο οποίο τα μέλη έχουν τη δυνατότητα να μοιραστούν εμπειρίες, σκέψεις και συναισθήματα, αναγνωρίζοντας ότι πολλά από όσα βιώνουν αποκτούν νόημα μέσα από τη σχέση με τους άλλους.</p>
+                        <p>Η ομάδα λειτουργεί ως ένας χώρος σύνδεσης, ανατροφοδότησης και προσωπικής διερεύνησης, όπου κάθε μέλος μπορεί να παρατηρήσει τον τρόπο με τον οποίο σχετίζεται, επικοινωνεί και ανταποκρίνεται στις διαπροσωπικές αλληλεπιδράσεις.</p>
+                        <p>Μέσα από την ομαδική θεραπεία ενισχύονται η αυτογνωσία, η κατανόηση των σχέσεων, η συναισθηματική έκφραση και η δυνατότητα ανάπτυξης νέων τρόπων σύνδεσης με τον εαυτό και τους άλλους.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="service-card svc-toggle rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Online ψυχοθεραπεία & συμβουλευτική</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Ψυχολογική υποστήριξη εξ αποστάσεως, σε ένα ασφαλές, εμπιστευτικό και ευέλικτο θεραπευτικό πλαίσιο.</p>
+                    <div class="svc-full">
+                        <p>Η online ψυχοθεραπεία και συμβουλευτική προσφέρει τη δυνατότητα ψυχολογικής υποστήριξης εξ αποστάσεως μέσα από ένα ασφαλές, σταθερό και εμπιστευτικό θεραπευτικό πλαίσιο.</p>
+                        <p>Απευθύνεται σε ανθρώπους που διαμένουν σε διαφορετική περιοχή, βρίσκονται στο εξωτερικό, έχουν περιορισμένο χρόνο μετακίνησης ή επιθυμούν μεγαλύτερη ευελιξία στον τρόπο πραγματοποίησης των συνεδριών.</p>
+                        <p>Η διαδικτυακή θεραπεία διατηρεί τα βασικά χαρακτηριστικά της θεραπευτικής διαδικασίας, όπως τη συνέπεια, τη σταθερότητα και τη θεραπευτική σχέση, προσφέροντας έναν ουσιαστικό χώρο επεξεργασίας προσωπικών δυσκολιών, συναισθημάτων και σχέσεων.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="service-card svc-toggle svc-wide rv">
+                    <button class="svc-btn" type="button" aria-expanded="false">
+                        <h3>Σεμινάρια και Workshops</h3>
+                        <span class="svc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                    </button>
+                    <p class="svc-sum">Ψυχοεκπαιδευτικά και βιωματικά σεμινάρια για άτομα, γονείς, ζευγάρια, ομάδες και επαγγελματίες που επιθυμούν να εμβαθύνουν σε θέματα ψυχικής υγείας και προσωπικής ανάπτυξης.</p>
+                    <div class="svc-full">
+                        <p>Τα σεμινάρια και τα workshops έχουν ψυχοεκπαιδευτικό και βιωματικό χαρακτήρα και απευθύνονται σε άτομα, γονείς, ζευγάρια, ομάδες και επαγγελματίες που επιθυμούν να εμβαθύνουν σε ζητήματα ψυχικής υγείας, σχέσεων και προσωπικής ανάπτυξης.</p>
+                        <p>Οι θεματικές μπορεί να αφορούν τη γονεϊκότητα, την επικοινωνία στις σχέσεις, τη διαχείριση του άγχους, την αυτογνωσία, τη συναισθηματική ανάπτυξη και άλλες σύγχρονες ψυχολογικές προκλήσεις της καθημερινότητας.</p>
+                        <p>Μέσα από θεωρητική ενημέρωση, βιωματικές ασκήσεις και συζήτηση, οι συμμετέχοντες έχουν τη δυνατότητα να αποκτήσουν νέες γνώσεις, να εμβαθύνουν στην προσωπική τους εμπειρία και να αναπτύξουν πρακτικά εργαλεία που μπορούν να αξιοποιήσουν στην καθημερινή ζωή και στις σχέσεις τους.</p>
+                    </div>
+                    <span class="svc-more">Μάθετε περισσότερα <span aria-hidden="true">→</span></span>
+                </div>
+            </div>
+            <div class="svc-cta rv">
+                <p>Δεν είστε σίγουροι ποια υπηρεσία ανταποκρίνεται καλύτερα στις ανάγκες σας;</p>
+                <a href="#contact" class="btn-tz">Επικοινωνήστε μαζί μου</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="space">
+        <div class="container">
+            <h2 class="section-title rv">Ο Χώρος</h2>
+            <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+            <p class="section-subtitle rv" style="color: var(--dark-green);">Ο θεραπευτικός χώρος έχει διαμορφωθεί με στόχο να προσφέρει ασφάλεια και διακριτικότητα. Προσφέρονται δια ζώσης, αλλά και online συνεδρίες ανάλογα με τις ανάγκες και τις δυνατότητες κάθε ανθρώπου.</p>
+
+            <div class="gal-wrap rv">
+                <div class="gal-featured" id="galFeatured">
+                    <div class="image-placeholder" data-gal="1" style="aspect-ratio: 16/10;">[Φωτογραφία Χώρου 1]</div>
+                </div>
+                <div class="gal-thumbs" id="galThumbs">
+                    <div class="image-placeholder gal-thumb is-active" data-gal="1">[Φωτογραφία Χώρου 1]</div>
+                    <div class="image-placeholder gal-thumb" data-gal="2">[Φωτογραφία Χώρου 2]</div>
+                    <div class="image-placeholder gal-thumb" data-gal="3">[Φωτογραφία Χώρου 3]</div>
+                    <div class="image-placeholder gal-thumb" data-gal="4">[Φωτογραφία Χώρου 4]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quote" class="quote-section">
+        <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+        <blockquote class="site-quote">«Οι άνθρωποι αλλάζουν όταν νιώσουν ότι γίνονται αποδεκτοί όπως είναι.»</blockquote>
+        <cite class="quote-cite">— Carl Rogers</cite>
+        <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+    </section>
+
+    <section id="articles" style="padding-top: 0;">
+        <div class="green-banner">
+            <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-sway" style="top: -20px; left: 5%;" alt="">
+            <h2>Αρθρογραφία</h2>
+        </div>
+
+        <div class="container">
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-img">[Εικόνα Άρθρου]</div>
+                    <div class="article-content">
+                        <span class="article-category">ΑΓΧΟΣ</span>
+                        <h3 class="article-title">Τίτλος άρθρου (Προσεχώς)</h3>
+                        <a href="#" class="article-link">Διαβάστε περισσότερα &rarr;</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img">[Εικόνα Άρθρου]</div>
+                    <div class="article-content">
+                        <span class="article-category">ΓΟΝΕΪΚΟΤΗΤΑ</span>
+                        <h3 class="article-title">Τίτλος άρθρου (Προσεχώς)</h3>
+                        <a href="#" class="article-link">Διαβάστε περισσότερα &rarr;</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img">[Εικόνα Άρθρου]</div>
+                    <div class="article-content">
+                        <span class="article-category">ΣΧΕΣΕΙΣ</span>
+                        <h3 class="article-title">Τίτλος άρθρου (Προσεχώς)</h3>
+                        <a href="#" class="article-link">Διαβάστε περισσότερα &rarr;</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 md:py-32 bg-white relative overflow-hidden">
-        <!-- Abstract Background Shapes -->
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-lux-sand/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-lux-moss/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-24 reveal">
-                <span class="text-lux-moss text-sm tracking-widest uppercase font-medium">Προσεγγιση & Φροντιδα</span>
-                <h2 class="text-4xl md:text-6xl font-serif text-lux-forest mt-4 mb-6">Υπηρεσίες</h2>
-                <div class="w-16 h-[2px] bg-lux-sand mx-auto"></div>
-            </div>
-
-            <div class="space-y-12 lg:space-y-24">
-                
-                <!-- Service 01 -->
-                <div class="glass-service-card overflow-hidden rounded-[2.5rem] group reveal shadow-soft hover:shadow-premium transition-all duration-700 relative">
-                    <div class="absolute top-0 right-0 w-96 h-96 bg-lux-sand/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-lux-moss/10 transition-all duration-700 pointer-events-none"></div>
-                    <div class="grid lg:grid-cols-12 gap-8 p-10 md:p-16 relative z-10 items-center">
-                        <div class="lg:col-span-4 flex flex-col justify-between h-full">
-                            <!-- Premium Icon Container -->
-                            <div class="relative w-24 h-24 mb-10 group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute inset-0 bg-lux-forest/10 rounded-[2rem] rotate-6 group-hover:rotate-12 transition-transform duration-700"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-lux-forest to-[#0d3622] text-white rounded-[2rem] flex items-center justify-center shadow-[0_20px_40px_-10px_rgba(18,70,45,0.4)] border border-lux-forest/50 group-hover:-rotate-3 transition-transform duration-700">
-                                    <i data-lucide="puzzle" stroke-width="1.5" class="w-10 h-10 text-lux-sand"></i>
-                                </div>
-                            </div>
-                            <div class="text-[7rem] leading-none font-serif text-lux-sand/30 font-black select-none hidden lg:block">01</div>
-                        </div>
-                        <div class="lg:col-span-8">
-                            <h3 class="text-3xl md:text-4xl font-serif text-lux-forest mb-6">Παιδοψυχολογία, Σχολική Ψυχολογία & Εφηβεία</h3>
-                            <p class="text-lux-taupe text-lg leading-relaxed mb-8">
-                                Συνδυάζοντας την παιδαγωγική της εμπειρία με την Κλινική Ψυχολογία, η θεραπεύτρια προσεγγίζει τις δυσκολίες των παιδιών και των εφήβων με μοναδική ευαισθησία. Αντιμετωπίζουμε μαζί ζητήματα σχολικού εκφοβισμού, μαθησιακών και νευροαναπτυξιακών δυσκολιών (ΔΕΠΥ), καθώς και τις συναισθηματικές μεταπτώσεις ή τις διατροφικές διαταραχές που συχνά εμφανίζονται στην ευάλωτη φάση της εφηβείας.
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Ψυχοθεραπεία (60')</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Αντιμετώπιση ΔΕΠΥ</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Διατροφικές διαταραχές</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 02 -->
-                <div class="glass-service-card overflow-hidden rounded-[2.5rem] group reveal shadow-soft hover:shadow-premium transition-all duration-700 relative">
-                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-lux-sage/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 group-hover:bg-lux-forest/10 transition-all duration-700 pointer-events-none"></div>
-                    <div class="grid lg:grid-cols-12 gap-8 p-10 md:p-16 relative z-10 items-center">
-                        <div class="lg:col-span-4 flex flex-col justify-between h-full order-1 lg:order-2 lg:items-end">
-                            <!-- Premium Icon Container -->
-                            <div class="relative w-24 h-24 mb-10 group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute inset-0 bg-lux-sage/10 rounded-[2rem] -rotate-6 group-hover:-rotate-12 transition-transform duration-700"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-lux-sage to-[#2c4b27] text-white rounded-[2rem] flex items-center justify-center shadow-[0_20px_40px_-10px_rgba(63,105,57,0.4)] border border-lux-sage/50 group-hover:rotate-3 transition-transform duration-700">
-                                    <i data-lucide="heart-handshake" stroke-width="1.5" class="w-10 h-10 text-lux-sand"></i>
-                                </div>
-                            </div>
-                            <div class="text-[7rem] leading-none font-serif text-lux-sand/30 font-black select-none hidden lg:block">02</div>
-                        </div>
-                        <div class="lg:col-span-8 order-2 lg:order-1">
-                            <h3 class="text-3xl md:text-4xl font-serif text-lux-forest mb-6">Συστημική Θεραπεία Οικογένειας & Ζεύγους</h3>
-                            <p class="text-lux-taupe text-lg leading-relaxed mb-8">
-                                Κανένα παιδί και κανένας ενήλικας δεν ζει σε κενό. Μέσα από τη Συστημική Οικογενειακή Θεραπεία, εξερευνούμε τον τρόπο που επικοινωνεί όλη η οικογένεια. Παρέχεται εξειδικευμένη καθοδήγηση σε γονείς για την οριοθέτηση των παιδιών, και υποστήριξη σε ζευγάρια προκειμένου να διαχειριστούν τις συγκρούσεις τους, μετατρέποντας το σπίτι ξανά σε ένα περιβάλλον ηρεμίας και ασφάλειας.
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Οικογενειακή θεραπεία (60')</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Θεραπεία ζεύγους</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 03 -->
-                <div class="glass-service-card overflow-hidden rounded-[2.5rem] group reveal shadow-soft hover:shadow-premium transition-all duration-700 relative">
-                    <div class="absolute top-0 right-0 w-96 h-96 bg-lux-sand/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-lux-moss/10 transition-all duration-700 pointer-events-none"></div>
-                    <div class="grid lg:grid-cols-12 gap-8 p-10 md:p-16 relative z-10 items-center">
-                        <div class="lg:col-span-4 flex flex-col justify-between h-full">
-                            <!-- Premium Icon Container -->
-                            <div class="relative w-24 h-24 mb-10 group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute inset-0 bg-lux-moss/10 rounded-[2rem] rotate-6 group-hover:rotate-12 transition-transform duration-700"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-lux-moss to-[#416330] text-white rounded-[2rem] flex items-center justify-center shadow-[0_20px_40px_-10px_rgba(86,131,64,0.4)] border border-lux-moss/50 group-hover:-rotate-3 transition-transform duration-700">
-                                    <i data-lucide="brain-circuit" stroke-width="1.5" class="w-10 h-10 text-lux-sand"></i>
-                                </div>
-                            </div>
-                            <div class="text-[7rem] leading-none font-serif text-lux-sand/30 font-black select-none hidden lg:block">03</div>
-                        </div>
-                        <div class="lg:col-span-8">
-                            <h3 class="text-3xl md:text-4xl font-serif text-lux-forest mb-6">Κλινική Ψυχολογία Ενηλίκων, Τραύμα & Πένθος</h3>
-                            <p class="text-lux-taupe text-lg leading-relaxed mb-8">
-                                Στις ατομικές συνεδρίες ενηλίκων (60 λεπτών), προσφέρεται υποστήριξη για την αντιμετώπιση του χρόνιου στρες, των κρίσεων πανικού και της κατάθλιψης. Με βαθιά ενσυναίσθηση, δημιουργούμε τον χώρο για να επεξεργαστείτε δύσκολα ψυχικά τραύματα ή να διαχειριστείτε τον πόνο μιας σημαντικής απώλειας (πένθος), ανακτώντας βήμα-βήμα τη λειτουργικότητά σας.
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Διαχείριση άγχους (60')</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Τραύμα & Πένθος</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Συνθετική Ψυχοθεραπεία</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 04 -->
-                <div class="glass-service-card overflow-hidden rounded-[2.5rem] group reveal shadow-soft hover:shadow-premium transition-all duration-700 relative">
-                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-lux-sage/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 group-hover:bg-lux-forest/10 transition-all duration-700 pointer-events-none"></div>
-                    <div class="grid lg:grid-cols-12 gap-8 p-10 md:p-16 relative z-10 items-center">
-                        <div class="lg:col-span-4 flex flex-col justify-between h-full order-1 lg:order-2 lg:items-end">
-                            <!-- Premium Icon Container -->
-                            <div class="relative w-24 h-24 mb-10 group-hover:scale-105 transition-all duration-500">
-                                <div class="absolute inset-0 bg-lux-taupe/10 rounded-[2rem] -rotate-6 group-hover:-rotate-12 transition-transform duration-700"></div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-lux-taupe to-[#474037] text-white rounded-[2rem] flex items-center justify-center shadow-[0_20px_40px_-10px_rgba(94,84,72,0.4)] border border-lux-taupe/50 group-hover:rotate-3 transition-transform duration-700">
-                                    <i data-lucide="monitor-smartphone" stroke-width="1.5" class="w-10 h-10 text-lux-sand"></i>
-                                </div>
-                            </div>
-                            <div class="text-[7rem] leading-none font-serif text-lux-sand/30 font-black select-none hidden lg:block">04</div>
-                        </div>
-                        <div class="lg:col-span-8 order-2 lg:order-1">
-                            <h3 class="text-3xl md:text-4xl font-serif text-lux-forest mb-6">Εξαρτήσεις & Διαδικτυακή Θεραπεία</h3>
-                            <p class="text-lux-taupe text-lg leading-relaxed mb-8">
-                                Παρέχεται στοχευμένη υποστήριξη για τη διακοπή του καπνίσματος και την αντιμετώπιση εξαρτητικών συμπεριφορών. Για τη μέγιστη διευκόλυνσή σας, όλες οι υπηρεσίες είναι διαθέσιμες διαδικτυακά. Επιπλέον, αναγνωρίζοντας τις κοινωνικές ανισότητες, το γραφείο τηρεί αυστηρά ειδική, μειωμένη τιμολογιακή πολιτική για φοιτητές, ανέργους και άτομα με αναπηρία (ΑΜΕΑ).
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Βιντεοκλήση (60')</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Αντιμετώπιση εθισμών</span>
-                                <span class="text-sm font-medium border border-lux-sand/50 text-lux-forest px-5 py-2 rounded-full bg-white/50">Ειδικό κόστος</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title rv">Αξιολογήσεις</h2>
+            <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+            <p class="section-subtitle rv">Η εμπειρία των ανθρώπων που εμπιστεύτηκαν τη θεραπευτική διαδικασία.</p>
+            <!-- ΣΗΜΕΙΩΣΗ: αντικαταστήστε τα παρακάτω placeholders με πραγματικές αξιολογήσεις της κ. Τζοάνου -->
+            <div class="reviews-grid">
+                <div class="review-card rv"><div class="rev-stars">★★★★★</div><p>«[Αξιολόγηση 1 — επικολλήστε εδώ πραγματική κριτική]»</p><span class="rev-name">[Όνομα]</span></div>
+                <div class="review-card rv d1"><div class="rev-stars">★★★★★</div><p>«[Αξιολόγηση 2 — επικολλήστε εδώ πραγματική κριτική]»</p><span class="rev-name">[Όνομα]</span></div>
+                <div class="review-card rv d2"><div class="rev-stars">★★★★★</div><p>«[Αξιολόγηση 3 — επικολλήστε εδώ πραγματική κριτική]»</p><span class="rev-name">[Όνομα]</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Philosophy / Approach -->
-    <section id="philosophy" class="py-24 md:py-32 bg-lux-light relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                
-                <div class="reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif text-lux-forest mb-6 leading-tight text-balance">
-                        Από τη Σχολική Τάξη στο Θεραπευτικό Δωμάτιο: Μια Διπλή Ανάγνωση της Παιδικής Ψυχής
-                    </h2>
-                    <p class="text-lux-taupe mb-8 leading-relaxed">
-                        Συχνά οι γονείς φέρνουν τα παιδιά τους στο γραφείο ενός ειδικού νιώθοντας άγχος, ενοχές, ή φοβούμενοι μια "αυστηρή κλινική διάγνωση". Η δική μου οπτική, ωστόσο, έχει σφυρηλατηθεί μέσα από μια πολύ διαφορετική, διπλή διαδρομή. Πριν φορέσω την ιδιότητα της Κλινικής Ψυχολόγου, υπήρξα Νηπιαγωγός. Αυτός ο συνδυασμός αλλάζει ριζικά τον τρόπο που δουλεύω με εσάς και το παιδί σας:
-                    </p>
+    <section id="faq">
+        <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/leafs%20to%20be%20added%20throughout%20the%20website.png" class="leaf-decor leaf-sway" style="top: 10%; right: -20px; transform: scaleX(-1);" alt="">
 
-                    <div class="space-y-6">
-                        <div class="bullet-point">
-                            <h4 class="font-semibold text-lux-forest mb-1">Βλέπω το Παιδί, Όχι Μόνο το "Σύμπτωμα"</h4>
-                            <p class="text-sm text-lux-taupe leading-relaxed">Μέσα στις σχολικές τάξεις, δεν συναντάς κλινικούς όρους. Συναντάς παιδιά που παίζουν, που θυμώνουν, που ντρέπονται, που προσπαθούν να βρουν τη θέση τους στην ομάδα. Όταν εξετάζω ένα παιδί, βλέπω την καθημερινότητά του στο σχολείο, κατανοώντας πρακτικά τις δυσκολίες του.</p>
-                        </div>
-                        <div class="bullet-point">
-                            <h4 class="font-semibold text-lux-forest mb-1">Η "Γλώσσα" του Σχολείου</h4>
-                            <p class="text-sm text-lux-taupe leading-relaxed">Έχοντας υπάρξει κομμάτι του εκπαιδευτικού συστήματος, γνωρίζω πώς ακριβώς να συνεργαστώ με τους δασκάλους του παιδιού σας. Γίνομαι η "γέφυρα" μεταξύ οικογένειας, σχολείου και θεραπευτηρίου.</p>
-                        </div>
-                        <div class="bullet-point">
-                            <h4 class="font-semibold text-lux-forest mb-1">Απο-ενοχοποίηση των Γονέων</h4>
-                            <p class="text-sm text-lux-taupe leading-relaxed">Στη Συστημική Θεραπεία, δεν υπάρχουν "κακοί" γονείς ή "προβληματικά" παιδιά. Υπάρχουν συστήματα που έχουν μπλοκάρει. Ο ρόλος μου είναι να σας δώσω εργαλεία για να επικοινωνήσετε ξανά.</p>
-                        </div>
-                        <div class="bullet-point">
-                            <h4 class="font-semibold text-lux-forest mb-1">Κοινοτική Ψυχολογία στην Πράξη</h4>
-                            <p class="text-sm text-lux-taupe leading-relaxed">Η παροχή μειωμένων τιμών σε ΑΜΕΑ, ανέργους και φοιτητές δεν είναι απλώς μια πολιτική, είναι ο πυρήνας της φιλοσοφίας μου: Η φροντίδα ανήκει σε όλη την κοινότητα.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative reveal delay-200">
-                    <div class="aspect-square overflow-hidden rounded-full shadow-2xl img-hover-zoom relative z-10 border-8 border-white">
-                        <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/eb83c53d-e2fe-4869-8ad6-4e58e555edcb.jpg?raw=true" alt="Προσέγγιση Καλλιόπη Αϊβαζίδου" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Ambient Glow -->
-                    <div class="absolute inset-0 bg-lux-moss/20 blur-[80px] rounded-full z-0 transform translate-x-10 translate-y-10"></div>
-                </div>
+        <div class="container faq-container">
+            <h2 class="section-title rv">Συχνές Ερωτήσεις</h2>
+            <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><path d="M-8 6 C -4 -2, 4 -6, 10 -8" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/><ellipse cx="8.5" cy="-7" rx="2.6" ry="1.3" transform="rotate(-20 8.5 -7)" fill="currentColor"/></g></svg></div>
+            <p class="section-subtitle rv">Εδώ θα βρείτε απαντήσεις σε συχνές ερωτήσεις σχετικά με τη ψυχοθεραπεία και τη διαδικασία. Αν έχετε κάποια άλλη απορία, μπορείτε να επικοινωνήσετε μαζί μου.</p>
+            <details class="faq-cat" open>
+                <summary class="faq-cat-sum">Έναρξη θεραπείας<span class="cat-chev" aria-hidden="true">+</span></summary>
+                <div class="faq-cat-body">
+            <details>
+                <summary>Πότε μπορεί κάποιος να απευθυνθεί σε ψυχολόγο;</summary>
+                <p>Μπορείτε να απευθυνθείτε σε ψυχολόγο όταν νιώθετε ότι χρειάζεστε έναν ασφαλή χώρο για να κατανοήσετε καλύτερα όσα σας δυσκολεύουν, όπως άγχος, έντονη πίεση, αλλαγές στη διάθεση, δυσκολίες στις σχέσεις, οικογενειακά ζητήματα, απώλεια, χαμηλή αυτοεκτίμηση ή περιόδους σημαντικών αλλαγών στη ζωή σας.</p>
+            </details>
+            <details>
+                <summary>Χρειάζεται να έχω συγκεκριμένο πρόβλημα για να ξεκινήσω ψυχοθεραπεία;</summary>
+                <p>Η ψυχοθεραπεία μπορεί να ξεκινήσει ακόμη και όταν το αίτημα βρίσκεται ακόμη σε διερεύνηση. Πολλές φορές ένας άνθρωπος έρχεται με ένα αίσθημα πίεσης, σύγχυσης, επανάληψης ή δυσφορίας, χωρίς να μπορεί ακόμη να το ονομάσει με ακρίβεια. Η θεραπευτική διαδικασία βοηθά σταδιακά στην κατανόηση αυτού που συμβαίνει.</p>
+            </details>
+            <details>
+                <summary>Μπορώ να έρθω στη θεραπεία αν δεν ξέρω ακριβώς τι νιώθω;</summary>
+                <p>Ναι. Πολλοί άνθρωποι ξεκινούν θεραπεία με μια γενική αίσθηση δυσφορίας, πίεσης ή εσωτερικής σύγχυσης. Η θεραπεία μπορεί να βοηθήσει στο να δοθεί λόγος σε αυτά που μέχρι τώρα βιώνονται αόριστα ή σιωπηλά.</p>
+            </details>
+            <details>
+                <summary>Η ψυχοθεραπεία απευθύνεται μόνο σε ανθρώπους που βρίσκονται σε κρίση;</summary>
+                <p>Η ψυχοθεραπεία μπορεί να είναι χρήσιμη τόσο σε περιόδους κρίσης όσο και σε περιόδους προσωπικής αναζήτησης, αλλαγής ή ανάγκης για καλύτερη κατανόηση του εαυτού. Ένας άνθρωπος μπορεί να ζητήσει υποστήριξη όταν επιθυμεί να κατανοήσει βαθύτερα τον εαυτό του, τις σχέσεις του και τον τρόπο με τον οποίο βιώνει τη ζωή του.</p>
+            </details>
 
             </div>
+            </details>
+            <details class="faq-cat">
+                <summary class="faq-cat-sum">Η πρώτη συνεδρία<span class="cat-chev" aria-hidden="true">+</span></summary>
+                <div class="faq-cat-body">
+            <details>
+                <summary>Τι γίνεται στην πρώτη συνεδρία;</summary>
+                <p>Η πρώτη συνεδρία έχει κυρίως διερευνητικό χαρακτήρα. Στόχος είναι να γνωριστούμε, να μιλήσετε για αυτό που σας απασχολεί και να διαμορφώσουμε μαζί μια αρχική εικόνα των αναγκών, των προσδοκιών και του θεραπευτικού πλαισίου.</p>
+            </details>
+            <details>
+                <summary>Πώς μπορώ να προετοιμαστώ για την πρώτη συνεδρία;</summary>
+                <p>Αρκεί να έρθετε με όσα νιώθετε ότι θέλετε να μοιραστείτε. Η πρώτη συνάντηση είναι ένας χώρος γνωριμίας, κατανόησης και αρχικής διερεύνησης, με σεβασμό στον ρυθμό και στις ανάγκες σας.</p>
+            </details>
+            <details>
+                <summary>Είναι φυσιολογικό να νιώθω αμηχανία στην πρώτη συνεδρία;</summary>
+                <p>Η αμηχανία στην πρώτη συνάντηση είναι απόλυτα αναμενόμενη. Η γνωριμία με έναν νέο άνθρωπο και η έκθεση προσωπικών σκέψεων ή συναισθημάτων μπορεί να χρειάζονται χρόνο. Η θεραπευτική σχέση χτίζεται σταδιακά, μέσα σε κλίμα αποδοχής, σεβασμού και ασφάλειας.</p>
+            </details>
+            <details>
+                <summary>Τι γίνεται αν δυσκολεύομαι να μιλήσω για όσα με απασχολούν;</summary>
+                <p>Ο ρυθμός κάθε ανθρώπου γίνεται σεβαστός. Η θεραπευτική διαδικασία επιτρέπει σταδιακά την ανάπτυξη εμπιστοσύνης, ώστε το άτομο να μπορέσει να μοιραστεί όσα είναι έτοιμο να επεξεργαστεί.</p>
+            </details>
+
+            </div>
+            </details>
+            <details class="faq-cat">
+                <summary class="faq-cat-sum">Πρακτικές πληροφορίες<span class="cat-chev" aria-hidden="true">+</span></summary>
+                <div class="faq-cat-body">
+            <details>
+                <summary>Πώς κλείνω ραντεβού;</summary>
+                <p>Το ραντεβού μπορεί να προγραμματιστεί τηλεφωνικά ή μέσω της φόρμας επικοινωνίας. Κατά την πρώτη επικοινωνία συζητάμε σύντομα το αίτημά σας και βρίσκουμε την ημέρα και ώρα που εξυπηρετεί καλύτερα.</p>
+            </details>
+            <details>
+                <summary>Πόσο διαρκεί κάθε συνεδρία;</summary>
+                <p>Η ατομική συνεδρία διαρκεί συνήθως 50 λεπτά. Η διάρκεια μπορεί να διαφοροποιείται ανάλογα με το είδος της συνάντησης, όπως συμβουλευτική γονέων, συνεδρία ζεύγους ή οικογενειακή συνάντηση.</p>
+            </details>
+            <details>
+                <summary>Κάθε πότε γίνονται οι συνεδρίες;</summary>
+                <p>Συνήθως οι συνεδρίες πραγματοποιούνται μία φορά την εβδομάδα, ώστε να υπάρχει συνέχεια και σταθερότητα στη θεραπευτική διαδικασία. Η συχνότητα προσαρμόζεται ανάλογα με το αίτημα και τις ανάγκες κάθε ανθρώπου.</p>
+            </details>
+            <details>
+                <summary>Παρέχονται online συνεδρίες;</summary>
+                <p>Ναι, παρέχονται και online συνεδρίες, όταν αυτό εξυπηρετεί τις ανάγκες του προσώπου ή όταν η φυσική παρουσία στον χώρο είναι δύσκολη. Οι online συνεδρίες πραγματοποιούνται σε σταθερό και προστατευμένο πλαίσιο, με σεβασμό στην εμπιστευτικότητα.</p>
+            </details>
+            <details>
+                <summary>Πόσο διαρκεί συνολικά η ψυχοθεραπεία;</summary>
+                <p>Η διάρκεια της θεραπευτικής διαδικασίας εξαρτάται από το αίτημα, τους στόχους, τον ρυθμό και τις ανάγκες κάθε ανθρώπου. Σε κάποιες περιπτώσεις η υποστήριξη μπορεί να είναι βραχυπρόθεσμη, ενώ σε άλλες χρειάζεται περισσότερος χρόνος για βαθύτερη επεξεργασία.</p>
+            </details>
+
+            </div>
+            </details>
+            <details class="faq-cat">
+                <summary class="faq-cat-sum">Θεραπευτικό πλαίσιο<span class="cat-chev" aria-hidden="true">+</span></summary>
+                <div class="faq-cat-body">
+            <details>
+                <summary>Υπάρχει απόρρητο;</summary>
+                <p>Η θεραπευτική διαδικασία διέπεται από αυστηρή εμπιστευτικότητα και σεβασμό στο προσωπικό απόρρητο. Όσα συζητούνται κατά τη διάρκεια των συνεδριών προστατεύονται σύμφωνα με τον Κώδικα Δεοντολογίας των Ψυχολόγων και τη σχετική νομοθεσία περί προστασίας προσωπικών δεδομένων.</p>
+            </details>
+            <details>
+                <summary>Τι μπορώ να περιμένω από τη θεραπευτική διαδικασία;</summary>
+                <p>Η θεραπευτική διαδικασία προσφέρει έναν σταθερό χώρο διερεύνησης, κατανόησης και επεξεργασίας. Μέσα από τη σχέση με τον θεραπευτή, το άτομο μπορεί να αναγνωρίσει μοτίβα, συναισθήματα, δυσκολίες και τρόπους σύνδεσης με τον εαυτό και τους άλλους.</p>
+            </details>
+            <details>
+                <summary>Θα μου δοθούν συμβουλές για το τι πρέπει να κάνω;</summary>
+                <p>Η ψυχοθεραπεία εστιάζει στην κατανόηση, στη διερεύνηση και στην ενίσχυση της προσωπικής επίγνωσης. Στόχος είναι να δημιουργηθεί ένας χώρος όπου το άτομο μπορεί να κατανοήσει βαθύτερα τον εαυτό του, τις ανάγκες του και τις επιλογές του, ώστε να κινηθεί με μεγαλύτερη καθαρότητα και προσωπική ευθύνη.</p>
+            </details>
+            <details>
+                <summary>Πώς καταλαβαίνω αν η θεραπεία με βοηθά;</summary>
+                <p>Η θεραπευτική αλλαγή συχνά εμφανίζεται ως σταδιακή μετατόπιση στον τρόπο που το άτομο κατανοεί τον εαυτό του, σχετίζεται με τους άλλους, αναγνωρίζει τις ανάγκες του και διαχειρίζεται τις δυσκολίες του.</p>
+            </details>
+            <details>
+                <summary>Μπορώ να σταματήσω τη θεραπεία όποτε θέλω;</summary>
+                <p>Η θεραπευτική διαδικασία βασίζεται στη συνεργασία και στον σεβασμό της προσωπικής επιλογής. Όταν ένας άνθρωπος σκέφτεται να ολοκληρώσει ή να διακόψει τη θεραπεία, είναι σημαντικό αυτό να συζητηθεί μέσα στη συνεδρία, ώστε να υπάρξει ένας ουσιαστικός και φροντιστικός αποχαιρετισμός.</p>
+            </details>
+
+            </div>
+            </details>
+            <details class="faq-cat">
+                <summary class="faq-cat-sum">Παιδιά, έφηβοι και γονείς<span class="cat-chev" aria-hidden="true">+</span></summary>
+                <div class="faq-cat-body">
+            <details>
+                <summary>Μπορώ να απευθυνθώ για το παιδί ή τον έφηβό μου;</summary>
+                <p>Ναι, οι γονείς μπορούν να απευθυνθούν για ζητήματα που αφορούν το παιδί ή τον έφηβο, όπως άγχος, δυσκολίες στη συμπεριφορά, συναισθηματική επιβάρυνση, σχολικές δυσκολίες, οικογενειακές αλλαγές ή δυσκολίες στις σχέσεις. Η συνεργασία με τους γονείς αποτελεί σημαντικό μέρος της διαδικασίας.</p>
+            </details>
+            <details>
+                <summary>Υπάρχει δυνατότητα συμβουλευτικής γονέων;</summary>
+                <p>Ναι, η συμβουλευτική γονέων μπορεί να βοηθήσει στην κατανόηση των δυσκολιών του παιδιού ή του εφήβου, αλλά και στη διαμόρφωση πιο λειτουργικών τρόπων επικοινωνίας, οριοθέτησης και συναισθηματικής στήριξης μέσα στην οικογένεια.</p>
+            </details>
+            <details>
+                <summary>Μπορεί ένας έφηβος να κάνει συνεδρίες χωρίς να γνωρίζουν οι γονείς όσα λέει;</summary>
+                <p>Στην εργασία με εφήβους, η εμπιστευτικότητα είναι ιδιαίτερα σημαντική. Οι γονείς ενημερώνονται για τη γενική πορεία και για ζητήματα που αφορούν την ασφάλεια ή τη φροντίδα του παιδιού, ενώ ο προσωπικός χώρος του εφήβου προστατεύεται με σεβασμό και επαγγελματική ευθύνη.</p>
+            </details>
+        </div>
+            </details>
         </div>
     </section>
 
-    <!-- Space / Gallery Section -->
-    <section id="space" class="py-24 bg-[#121212] text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-serif mb-4">Ο Χώρος</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Ένα περιβάλλον αισθητικής και γαλήνης, σχεδιασμένο για να προσφέρει την απόλυτη άνεση και ασφάλεια.</p>
-            </div>
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title rv">Επικοινωνία</h2>
+            <div class="bot-divider" aria-hidden="true"><svg viewBox="0 0 300 24"><path d="M10 12 C 60 6, 100 18, 138 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M162 12 C 200 6, 240 18, 290 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><g transform="translate(150 12)"><ellipse cx="-4" cy="1" rx="3.2" ry="1.6" transform="rotate(-35 -4 1)" fill="currentColor"/><ellipse cx="0" cy="-2.5" rx="3.2" ry="1.6" transform="rotate(-30 0 -2.5)" fill="currentColor"/><ellipse cx="4.5" cy="-5" rx="3" ry="1.5" transform="rotate(-25 4.5 -5)" fill="currentColor"/></g></svg></div>
+            <p class="section-subtitle rv">Αν έχετε κάποια απορία ή επιθυμείτε να προγραμματίσετε ένα πρώτο ραντεβού, μπορείτε να επικοινωνήσετε μαζί μου τηλεφωνικά, μέσω email ή συμπληρώνοντας τη φόρμα επικοινωνίας.</p>
 
-            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                <div class="break-inside-avoid relative group cursor-pointer reveal" onclick="openLightbox('https://raw.githubusercontent.com/agelmet/AIVAZIDOU/refs/heads/main/0cbabd29-c457-4a16-8cdb-4fd786b8e921.jpg')">
-                    <img src="https://raw.githubusercontent.com/agelmet/AIVAZIDOU/refs/heads/main/0cbabd29-c457-4a16-8cdb-4fd786b8e921.jpg" class="w-full h-auto rounded-sm transition-opacity group-hover:opacity-80" alt="Χώρος 1">
+            <div class="contact-cards">
+                <div class="contact-card rv">
+                    <h3 class="cc-title"><svg class="gic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg> Στοιχεία Επικοινωνίας</h3>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><div><strong>Τηλέφωνο</strong><br>210 440 4243</div></div>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>Διεύθυνση</strong><br>Λεωφόρος Ηρακλείου 191, Νέα Ιωνία<br><span class="cnote">Πρόσβαση: ΗΣΑΠ στάση Νέα Ιωνία ή στάση Πευκάκια</span></div></div>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><div><strong>Email</strong><br><a href="mailto:c.tzoanou@outlook.com">c.tzoanou@outlook.com</a></div></div>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><div><strong>Ώρες λειτουργίας</strong><br>Κατόπιν ραντεβού<br><span class="cnote">Online συνεδρίες διαθέσιμες</span></div></div>
+                    <div class="cc-actions">
+                        <a class="btn-tz sm" href="tel:+302104404243"><svg class="gic w" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Κλήση</a>
+                        <a class="btn-tz sm ghost" href="mailto:c.tzoanou@outlook.com"><svg class="gic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg> Email</a>
+                    </div>
                 </div>
-                <div class="break-inside-avoid relative group cursor-pointer reveal delay-100" onclick="openLightbox('https://github.com/agelmet/AIVAZIDOU/blob/main/34119006-6894-4ace-8250-594f63a3deb8.jpeg?raw=true')">
-                    <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/34119006-6894-4ace-8250-594f63a3deb8.jpeg?raw=true" class="w-full h-auto rounded-sm transition-opacity group-hover:opacity-80" alt="Χώρος 2">
+
+                <div class="contact-card map-card rv d1">
+                    <h3 class="cc-title"><svg class="gic" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Βρείτε μας</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.9298379361665!2d23.755100000000003!3d38.037100000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a198de7e667aa7%3A0xc3f8e5621434c44!2zzpsuIM6Xz4HOsc66zrvOtc6vzr_PhSAxOTEsIM6dzq3OsSDOmc-Jzr3Or86xIDE0MiAzMQ!5e0!3m2!1sel!2sgr!4v1700000000000!5m2!1sel!2sgr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-                <div class="break-inside-avoid relative group cursor-pointer reveal delay-200" onclick="openLightbox('https://github.com/agelmet/AIVAZIDOU/blob/main/7cadcf11-ae77-4523-8af3-1755bb214bd0.jpeg?raw=true')">
-                    <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/7cadcf11-ae77-4523-8af3-1755bb214bd0.jpeg?raw=true" class="w-full h-auto rounded-sm transition-opacity group-hover:opacity-80" alt="Χώρος 4">
+
+                <div class="contact-card rv">
+                    <h3 class="cc-title"><svg class="gic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg> Φόρμα Επικοινωνίας</h3>
+                    <form id="contactForm" novalidate>
+                        <div class="frow2">
+                            <input type="text" id="cf-name" placeholder="Ονοματεπώνυμο *" required>
+                            <input type="email" id="cf-email" placeholder="Email *" required>
+                        </div>
+                        <input type="tel" id="cf-phone" placeholder="Τηλέφωνο (προαιρετικό)">
+                        <textarea id="cf-msg" placeholder="Το μήνυμά σας *" required></textarea>
+                        <button type="submit" class="btn-tz wide">Αποστολή μηνύματος</button>
+                        <p class="form-note"><svg class="gic" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Τα προσωπικά σας δεδομένα παραμένουν ασφαλή και δεν κοινοποιούνται.</p>
+                    </form>
                 </div>
-                <div class="break-inside-avoid relative group cursor-pointer reveal" onclick="openLightbox('https://github.com/agelmet/AIVAZIDOU/blob/main/8b98deb8-bf7e-46a5-b8d9-24b2f63d7f17.jpg?raw=true')">
-                    <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/8b98deb8-bf7e-46a5-b8d9-24b2f63d7f17.jpg?raw=true" class="w-full h-auto rounded-sm transition-opacity group-hover:opacity-80" alt="Χώρος 5">
-                </div>
-                <div class="break-inside-avoid relative group cursor-pointer reveal delay-100" onclick="openLightbox('https://github.com/agelmet/AIVAZIDOU/blob/main/cd2a9299-9bcc-4e19-94e1-63ed97bb5478.jpg?raw=true')">
-                    <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/cd2a9299-9bcc-4e19-94e1-63ed97bb5478.jpg?raw=true" class="w-full h-auto rounded-sm transition-opacity group-hover:opacity-80" alt="Χώρος 6">
-                </div>
-                <div class="break-inside-avoid relative group cursor-pointer reveal delay-200" onclick="openLightbox('https://github.com/agelmet/AIVAZIDOU/blob/main/ed385565-c18d-4a87-aec2-50700fa0525b.jpeg?raw=true')">
-                    <img src="https://github.com/agelmet/AIVAZIDOU/blob/main/ed385565-c18d-4a87-aec2-50700fa0525b.jpeg?raw=true" class="w-full h-auto rounded-sm transition-opacity group-hover:opacity-80" alt="Χώρος 7">
+
+                <div class="contact-card rv d1">
+                    <h3 class="cc-title"><svg class="gic" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="8" cy="18" r="1.6"/><circle cx="16" cy="18" r="1.6"/><path d="M3 12h18"/></svg> Πρόσβαση</h3>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg><div><strong>ΗΣΑΠ Νέα Ιωνία</strong><br><span class="cnote">10 λεπτά με τα πόδια</span></div></div>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg><div><strong>ΗΣΑΠ Πευκάκια</strong><br><span class="cnote">12 λεπτά με τα πόδια</span></div></div>
+                    <div class="cline"><svg class="gic" viewBox="0 0 24 24"><path d="M5 17h14l-1.5-5a3 3 0 0 0-2.9-2.2H9.4A3 3 0 0 0 6.5 12L5 17z"/><circle cx="8" cy="17" r="1.8"/><circle cx="16" cy="17" r="1.8"/></svg><div><strong>Με αυτοκίνητο</strong><br><span class="cnote">Εύκολη πρόσβαση και δυνατότητα στάθμευσης στην περιοχή</span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center cursor-zoom-out" onclick="closeLightbox()">
-        <button class="absolute top-8 right-8 text-white hover:text-gray-400 transition-colors">
-            <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-        <img id="lightbox-img" src="" alt="Enlarged Space View" class="max-w-[90vw] max-h-[90vh] object-contain shadow-2xl cursor-default" onclick="event.stopPropagation()">
-    </div>
-
-    <!-- Reviews Section -->
-    <section id="reviews" class="py-24 bg-lux-sand/10 border-t border-lux-sand/20">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            
-            <div class="reveal">
-                <div class="flex items-center gap-4 mb-6">
-                    <h2 class="text-4xl font-serif text-lux-forest">Αξιολογήσεις</h2>
-                    <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DoctorAnytime" class="h-6 object-contain">
-                </div>
-                <p class="text-lux-taupe text-lg leading-relaxed mb-8">
-                    Η εμπιστοσύνη σας είναι η απόλυτη επιβεβαίωση της δουλειάς μας. Διαβάστε τις εμπειρίες των ανθρώπων που μας εμπιστεύτηκαν το πιο πολύτιμο αγαθό: την ψυχική τους υγεία.
-                </p>
-                <a href="https://www.doctoranytime.gr/d/Psychologos/mourtziapi-spyridoula" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-lux-forest font-bold hover:text-lux-sage transition-colors pb-1 border-b border-lux-forest hover:border-lux-sage uppercase tracking-widest text-sm">
-                    Περισσοτερες στο DoctorAnytime
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                </a>
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/tzoalogoo.png" alt="Χαρά Τζοάνου" class="footer-logo">
+                <img src="https://raw.githubusercontent.com/agelmet/TZOANNOU/refs/heads/main/homeaftertext.png" alt="Υπογραφή" class="footer-signature">
             </div>
-
-            <!-- Vertical Marquee -->
-            <div class="h-[600px] overflow-hidden relative marquee-mask">
-                <div class="flex flex-col gap-6 animate-marquee-vertical hover:[animation-play-state:paused]">
-                    
-                    <!-- Original Reviews List -->
-                    <div class="reviews-list space-y-6">
-                        <!-- Review 1 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Κάνουμε συνεδρίες εδώ και σχεδόν τρία χρόνια. Νιώθω ότι η Καλλιόπη με έχει βοηθήσει παρά πολύ σε αρκετούς τομείς και κυριότερα έχω μάθει να ακούω και να αξιολογώ τις ανάγκες και τα συναισθήματα μου."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Πανος • 12 Φεβρουαρίου 2025</div>
-                        </div>
-
-                        <!-- Review 2 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Με την Καλλιόπη ένοιωσα από την αρχή οικειότητα, κάτι που με βοήθησε να ανοιχτώ. Με την σωστή καθοδήγηση από την πλευρά της ήρθαν στο φως πράγματα που δεν είχα αντιληφθεί για τον εαυτό μου..."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Ελένη • 04 Φεβρουαρίου 2025</div>
-                        </div>
-
-                        <!-- Review 3 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Η Καλλιόπη ήταν από τις καλύτερες αποφάσεις που έχω πάρει. Είναι πραγματικά ευγενική, υποστηρικτική και με έκανε να νιώσω άνετα από την πρώτη στιγμή... Τη συστήνω ανεπιφύλακτα!"</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Κώστας • 28 Ιανουαρίου 2025</div>
-                        </div>
-
-                        <!-- Review 4 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Δείχνει ενδιαφέρον χωρίς καμία επικριτικότητα. Μελέτησε εις βάθος το πρόβλημα μου και τώρα έχω μια διαφορετική ματιά σε αυτά που αντιμετωπίζω."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Anna • 23 Ιανουαρίου 2025</div>
-                        </div>
-
-                        <!-- Review 5 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Εξαιρετική ψυχολόγος που δείχνει πραγματικά μεγάλη ενσυναισθηση στον άνθρωπο και στο πρόβλημα που αντιμετωπίζει. Την συστήνω ανεπιφύλακτα!!"</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Σοφια • 23 Ιανουαρίου 2025</div>
-                        </div>
-
-                        <!-- Review 6 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Η Καλλιόπη με βοήθησε & με βοηθάει ακόμη σε μια αρκετά δύσκολη στιγμή στη ζωή μου. Είναι εκεί και με ακούει, με καταλαβαίνει και είμαι ευγνώμων για αυτό!"</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Σωτηρία • 11 Σεπτεμβρίου 2024</div>
-                        </div>
-
-                        <!-- Review 7 -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Ανθρώπινη προσέγγιση, με κατανόηση και σεβασμό! Εμπνέει εμπιστοσύνη και σίγουρα με κάνει να νιώθω άνετα να μιλήσω... Καταφερα να συζητήσω για θέματα που με ταλαιπωρούν."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Panos • 02 Σεπτεμβρίου 2024</div>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate for infinite scroll -->
-                    <div class="reviews-list space-y-6" aria-hidden="true">
-                        <!-- Cloned contents -->
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Κάνουμε συνεδρίες εδώ και σχεδόν τρία χρόνια. Νιώθω ότι η Καλλιόπη με έχει βοηθήσει παρά πολύ σε αρκετούς τομείς..."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Πανος • 12 Φεβρουαρίου 2025</div>
-                        </div>
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Εξαιρετική ψυχολόγος που δείχνει πραγματικά μεγάλη ενσυναισθηση στον άνθρωπο και στο πρόβλημα που αντιμετωπίζει..."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Σοφια • 23 Ιανουαρίου 2025</div>
-                        </div>
-                        <div class="bg-white p-8 rounded-xl shadow-card border border-lux-sand/30">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-lux-forest text-lg">10.0 / 10</span>
-                                <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="DA" class="h-4 opacity-50">
-                            </div>
-                            <p class="text-lux-taupe text-sm italic mb-4">"Ανθρώπινη προσέγγιση, με κατανόηση και σεβασμό! Εμπνέει εμπιστοσύνη και σίγουρα με κάνει να νιώθω άνετα να μιλήσω..."</p>
-                            <div class="text-xs text-lux-moss font-semibold uppercase tracking-wider">Panos • 02 Σεπτεμβρίου 2024</div>
-                        </div>
-                    </div>
+            <div class="footer-grid">
+                <div>
+                    <h3>Χαρά Τζοάνου</h3>
+                    <p>Ψυχολόγος</p>
+                </div>
+                <div class="footer-contact">
+                    <p><svg class="gic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> 210 440 4243</p>
+                    <p><svg class="gic" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Λεωφόρος Ηρακλείου 191, Νέα Ιωνία</p>
+                    <p><svg class="gic" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4"/></svg> ΗΣΑΠ: Νέα Ιωνία ή Πευκάκια</p>
+                    <p><svg class="gic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg> c.tzoanou@outlook.com</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5A.5.5 0 0 1 14 8z"/></svg></a>
+                    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.1M12 17v-4a2 2 0 0 1 4 0v4"/></svg></a>
                 </div>
             </div>
-
-        </div>
-    </section>
-
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-lux-forest text-white pt-24 pb-12 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 mb-20">
-                
-                <div class="lg:col-span-5 reveal">
-                    <!-- Text Logo in Footer -->
-                    <div class="mb-10">
-                        <span class="block text-3xl md:text-4xl font-serif text-white mb-2 tracking-wide">Καλλιόπη Αϊβαζίδου</span>
-                        <span class="block text-xs text-lux-sand tracking-[0.2em] uppercase">Κλινικη Ψυχολογος & Ψυχοθεραπευτρια</span>
-                    </div>
-                    <h3 class="text-2xl font-serif mb-6 text-white/90">Ξεκινήστε το Ταξίδι σας</h3>
-                    <p class="text-lux-sand/80 text-sm leading-relaxed mb-8 max-w-sm">
-                        Το πρώτο βήμα είναι συχνά το πιο δύσκολο, αλλά είναι και το πιο σημαντικό. Επικοινωνήστε για να προγραμματίσουμε την πρώτη μας συνάντηση.
-                    </p>
-                    <a href="https://www.doctoranytime.gr/d/Psychologos/mourtziapi-spyridoula" target="_blank" class="inline-flex items-center px-8 py-4 bg-white text-lux-forest uppercase tracking-widest text-sm font-bold hover:bg-lux-sand transition-colors duration-300">
-                        Κλειστε Ραντεβου
-                    </a>
-                </div>
-
-                <div class="lg:col-span-4 reveal delay-100">
-                    <h4 class="text-lux-sand text-xs tracking-widest uppercase mb-6 font-semibold">Στοιχεια Επικοινωνιας</h4>
-                    <ul class="space-y-4 text-white/90 font-light">
-                        <li class="flex items-start gap-4">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-lux-moss shrink-0 mt-0.5"></i>
-                            <span>Εγνατία 125, Θεσσαλονίκη<br>Νομός Θεσσαλονίκης</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <i data-lucide="phone" class="w-5 h-5 text-lux-moss shrink-0"></i>
-                            <div class="flex flex-col">
-                                <a href="tel:+306945181233" class="hover:text-lux-sand transition-colors">+30 694 518 1233</a>
-                                <a href="tel:2107115953" class="hover:text-lux-sand transition-colors">210 711 5953</a>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-4 pt-2">
-                            <i data-lucide="clock" class="w-5 h-5 text-lux-moss shrink-0"></i>
-                            <span>Δευτέρα - Σάββατο<br><span class="text-lux-sand text-sm">Κατόπιν Ραντεβού</span></span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="lg:col-span-3 reveal delay-200">
-                    <h4 class="text-lux-sand text-xs tracking-widest uppercase mb-6 font-semibold">Κοινωνικα Δικτυα</h4>
-                    <div class="flex flex-col gap-5">
-                        <a href="https://www.instagram.com/kaivazidou_psychologist" target="_blank" class="flex items-center gap-3 hover:text-lux-sand transition-colors text-white/90 group">
-                            <img src="https://raw.githubusercontent.com/agelmet/Image-hosting-/refs/heads/main/instagram-logo-instagram-icon-transparent-free-png.png.webp" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform" alt="Instagram">
-                            <span class="font-light">Instagram</span>
-                        </a>
-                        <a href="https://www.doctoranytime.gr/d/Psychologos/mourtziapi-spyridoula" target="_blank" class="flex items-center gap-3 hover:text-lux-sand transition-colors text-white/90 mt-2 group">
-                            <i data-lucide="external-link" class="w-6 h-6 text-lux-sand group-hover:text-white transition-colors"></i>
-                            <span class="font-light">DoctorAnytime</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-lux-sand/60">
-                <p>© 2026 Καλλιόπη Αϊβαζίδου. Με επιφύλαξη παντός δικαιώματος.</p>
-                <p>Designed by <a href="https://advonmedia.com" target="_blank" rel="noopener" class="text-lux-sand font-medium hover:text-white transition-colors">Advon Media</a></p>
-            </div>
+            <p class="footer-bottom">© 2026 Χαρά Τζοάνου. Με την επιφύλαξη παντός δικαιώματος.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
+    <div class="book-bar" id="bookBar">
+        <p class="bb-text">Αν αισθάνεστε ότι ήρθε η στιγμή να φροντίσετε περισσότερο τον εαυτό σας, θα χαρώ να σας γνωρίσω.</p>
+        <div class="bb-actions">
+            <a href="https://doctoranytime.gr/" target="_blank" rel="noopener" class="bb-btn solid"><svg class="gic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Κλείστε το πρώτο σας ραντεβού <span aria-hidden="true">→</span></a>
+            <a href="#about" class="bb-btn"><span>Μάθετε περισσότερα για εμένα</span> <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
 
-        // Mobile Menu Logic
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        const navbar = document.getElementById('navbar');
 
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            
-            // Toggle icon menu/x
-            if (mobileMenu.classList.contains('flex')) {
-                mobileBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
-            } else {
-                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
-            }
-            lucide.createIcons();
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
-                lucide.createIcons();
-            });
-        });
-
-        // Navbar Scroll Styling
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-glass');
-                navbar.classList.replace('py-4', 'py-2');
-            } else {
-                navbar.classList.remove('shadow-glass');
-                navbar.classList.replace('py-2', 'py-4');
-            }
-        });
-
-        // Scroll Reveal Intersection Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); 
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Lightbox Logic
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-
-        function openLightbox(imageSrc) {
-            lightboxImg.src = imageSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            setTimeout(() => {
-                lightboxImg.src = '';
-                document.body.style.overflow = '';
-            }, 500);
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
-            }
-        });
-    </script>
+<script>
+(function(){
+  // Preloader
+  window.addEventListener('load', function(){
+    setTimeout(function(){ var pl=document.getElementById('preloader'); if(pl) pl.classList.add('done'); }, 1600);
+  });
+  // Scroll reveal (staggered by .d1/.d2 delays)
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv, .service-card, .article-card, .review-card, .contact-card, .acard').forEach(function(el){
+    el.classList.add('rv'); io.observe(el);
+  });
+  // Services expand/collapse
+  document.querySelectorAll('.svc-toggle').forEach(function(card){
+    var toggle = function(){ var open = card.classList.toggle('open'); var b=card.querySelector('.svc-btn'); if(b) b.setAttribute('aria-expanded', open); };
+    card.querySelector('.svc-btn').addEventListener('click', toggle);
+    var more = card.querySelector('.svc-more'); if(more) more.addEventListener('click', toggle);
+  });
+  // Gallery swap
+  var feat = document.getElementById('galFeatured');
+  document.querySelectorAll('.gal-thumb').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.gal-thumb').forEach(function(x){x.classList.remove('is-active')});
+      t.classList.add('is-active');
+      var clone = t.cloneNode(true);
+      clone.classList.remove('gal-thumb','is-active');
+      clone.style.aspectRatio='16/10'; clone.style.cursor='default';
+      feat.innerHTML=''; feat.appendChild(clone);
+    });
+  });
+  // Contact form -> mailto
+  var f = document.getElementById('contactForm');
+  if(f){ f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var n=document.getElementById('cf-name').value.trim(), em=document.getElementById('cf-email').value.trim(),
+        ph=document.getElementById('cf-phone').value.trim(), m=document.getElementById('cf-msg').value.trim();
+    if(!n||!em||!m){ alert('Παρακαλώ συμπληρώστε τα υποχρεωτικά πεδία.'); return; }
+    var body = encodeURIComponent('Ονοματεπώνυμο: '+n+'\nEmail: '+em+(ph?'\nΤηλέφωνο: '+ph:'')+'\n\n'+m);
+    window.location.href = 'mailto:c.tzoanou@outlook.com?subject='+encodeURIComponent('Μήνυμα από την ιστοσελίδα — '+n)+'&body='+body;
+  }); }
+})();
+</script>
 </body>
 </html>
